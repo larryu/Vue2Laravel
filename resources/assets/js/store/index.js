@@ -11,11 +11,14 @@ import tab from "./modules/tab";
 import orderDetails from "./modules/order-details";
 import cashSaleDetails from  "./modules/cash-sale-details"
 import role from "./modules/role"
+import loading from "./modules/loading"
+import state from "./modules/state"
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
+        loading,
         notification,
         authUser,
         login,
@@ -24,6 +27,7 @@ export default new Vuex.Store({
         orderDetails,
         cashSaleDetails,
         role,
+        state,
     },
     strict: true
 });

@@ -28,6 +28,11 @@ Route::group(['middleware' => 'jwt.auth'], function()
     Route::post('menu/edit/', 'MenuController@updateMenu');
     Route::post('menu/add/', 'MenuController@addMenu');
     Route::post('menu/delete/', 'MenuController@deleteMenu');
+
+    Route::get('statenodes', 'StateController@getStateNodes');
+    Route::post('state/edit/', 'StateController@updateState');
+    Route::post('state/add/', 'StateController@addState');
+    Route::post('state/delete/', 'StateController@deleteState');
 });
 
 //Route::get('roles', function() {

@@ -39,7 +39,7 @@ export default {
         console.log('Home Component mounted.')
     },
     computed: {
-       
+
     },
     methods: {
     }

@@ -15,9 +15,11 @@ Vue.http.interceptors.push((request, next) => {
     if(jwtToken.getToken()) {
         request.headers.set('Authorization', 'Bearer '+ jwtToken.getToken());
     }
-
+    // show loading
+    //store.dispatch('updateLoading', true);
     next((response) => {
         console.log('Vue.http.interceptors.push next response=', response);
+        //store.dispatch('updateLoading', false);
         if(!response.ok && response.body.error 
             && (response.body.error === "token_invalid" || response.body.error === "token_expired" || response.body.error === 'token_not_provided')) {
                 store.dispatch('logoutRequest')

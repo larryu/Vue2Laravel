@@ -17,8 +17,8 @@ Route::get('/{vue_capture?}', function () {
 Route::get('/test/user', 'MenuController@getMenuNodes');
 
 Route::get('/test/users', function() {
-
-
+    $state = \App\Models\Entities\State::find(10);
+    return $state->locations;
 
 });
 

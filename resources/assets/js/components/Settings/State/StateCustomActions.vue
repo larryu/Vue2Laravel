@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="menu-custom-actions text-center">
+        <div class="state-custom-actions text-center">
             <button v-if="actAdd" class="btn btn-primary" @click="itemAction('Add', rowData, rowIndex)" title="Add"><i class="glyphicon glyphicon-plus"></i></button>
             <button v-if="actEdit" class="btn btn-warning" @click="itemAction('Edit', rowData, rowIndex)" title="Edit"><i class="glyphicon glyphicon-pencil"></i></button>
             <button v-if="actDelete" class="btn btn-danger" @click="itemAction('Delete', rowData, rowIndex)" title="Delete"><i class="glyphicon glyphicon-remove"></i></button>
@@ -25,10 +25,7 @@
         },
         data () {
             return {
-                actAdd: {
-                    type: Boolean,
-                    default: true
-                },
+                actAdd: false,
                 actEdit: {
                     type: Boolean,
                     default: true
@@ -42,19 +39,10 @@
         mounted() {
         },
         updated() {
-            console.log('MenuCustomActions Component updated.');
+            console.log('StateCustomActions Component updated.');
         },
         created() {
-            console.log('MenuCustomActions created: ', this.rowData, this.rowIndex);
-            if (this.rowData.id === 1) {
-                // root menu cannot be deleted or edit
-                this.actDelete = false;
-                this.actEdit = false;
-            }
-            else if (this.rowData.level >= 3)
-            {
-                this.actAdd = false;
-            }
+            console.log('StateCustomActions created: ', this.rowData, this.rowIndex);
         },
         methods: {
             itemAction (action, data, index) {

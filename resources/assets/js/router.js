@@ -13,6 +13,7 @@ import ItemsView from './components/Items/Items.vue'
 import UserListView from './components/Settings/User/UserList.vue'
 import RoleListView from './components/Settings/Role/RoleList.vue'
 import MenuListView from './components/Settings/Menu/MenuList.vue'
+import StateListView from './components/Settings/State/StateList.vue'
 
 let routes = [
     { path: '/login', component: LoginView, name: 'login', meta: { requiresGuest: true } },
@@ -22,6 +23,7 @@ let routes = [
             { path: '/users', component: UserListView,  meta: { requiresAuth: true }},
             { path: '/roles', component: RoleListView,  meta: { requiresAuth: true }},
             { path: '/menus', component: MenuListView,  meta: { requiresAuth: true }},
+            { path: '/states', component: StateListView,  meta: { requiresAuth: true }},
             { path: '', component: DashboardView, name: 'dashboard', meta: { requiresAuth: true },
                 children: [
                     // { path: '/dashboard', redirect: {name: 'orderdetails'}, meta: { requiresAuth: true } },

@@ -34,18 +34,24 @@ class MenuRepository extends Repository
      */
     public function getAllChildren($menu, &$result = null, $starting = 0)
     {
+        static $level = 1;
         if($starting === 0) // initiate recursive function
         {
             $starting = $menu->id;
             $result = array();
         }
-        else $result[$menu->id] = $this->model->with('parent')->where('active', 1)->find($menu->id)->toArray();
+        else
+        {
+            $result[$menu->id] = $this->model->with('parent')->where('active', 1)->find($menu->id)->toArray();
+            $result[$menu->id]['level'] = $level++;
+        }
 
         $children = $this->model->where('parent_id', $menu->id)->where('active', 1)->get();
         foreach ($children as $child)
         {
             $this->getAllChildren($child, $result, $child->id);
         }
+        $level--;
         return $result;
     }
     public function add($request)

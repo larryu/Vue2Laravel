@@ -80,7 +80,7 @@ export default {
         updateMenuSuccess: ({commit, dispatch}, body) => {
             commit({
                 type: types.UPDATE_MENU_SUCCESS,
-                role: body.role
+                menu: body.menu
             });
             dispatch('showSuccessNotification', 'Menu has been updated.');
             dispatch('setMenus');
@@ -112,7 +112,7 @@ export default {
         deleteMenuSuccess: ({commit, dispatch}, body) => {
             commit({
                 type: types.DELETE_MENU_SUCCESS,
-                role: body.role
+                menu: body.menu
             });
             dispatch('showSuccessNotification', 'Menu has been deleted.');
             dispatch('setMenus');
@@ -145,7 +145,7 @@ export default {
         addMenuSuccess: ({commit, dispatch}, body) => {
             commit({
                 type: types.ADD_MENU_SUCCESS,
-                role: body.role
+                menu: body.menu
             });
             dispatch('showSuccessNotification', 'Menu has been added.');
             dispatch('setMenus');

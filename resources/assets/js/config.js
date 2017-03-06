@@ -21,3 +21,8 @@ export const deleteRole = apiDomain + '/role/delete/';
 export const updateMenu = apiDomain + '/menu/edit/';
 export const addMenu = apiDomain + '/menu/add/';
 export const deleteMenu = apiDomain + '/menu/delete/';
+
+export const currentStateNodes = apiDomain + '/statenodes';
+export const updateState = apiDomain + '/state/edit/';
+export const addState = apiDomain + '/state/add/';
+export const deleteState = apiDomain + '/state/delete/';
