@@ -2,25 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Entities\ResourceType;
+use App\Models\Services\TabService;
+use App\Models\Services\UserService;
 use Illuminate\Http\Request;
-use App\Models\Tab;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use DB;
 
 class TabController extends Controller
 {
+    protected $tabService;
+    protected $userService;
+
+    public function __construct(TabService $tabService, UserService $userService)
+    {
+        $this->tabService = $tabService;
+        $this->userService = $userService;
+    }
+
     public function show(Request $request)
     {
         // 1) first get user from token to check validation
         $user = JWTAuth::parseToken()->authenticate();
-        $userId = $user->id;
-        $userId = $user->email;
 
         // 2) get all tabs
-        $tabs = Tab::where('active', 1)->get(['*', DB::raw("'RW' as permission")])->keyBy('id')->toArray();
+        $tabs = $this->tabService->getAll();
 
         // 2) get accessible tabs based on user
-        $aclTabs = $user->getAclTabs();
+        $aclTabs = $this->userService->getAclResourceByType($user, ResourceType::TAB);
 
         // 3) rebuild tabs
         $mergedTabs = array_replace($tabs, $aclTabs);

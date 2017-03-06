@@ -10,8 +10,9 @@ import LoginView from './components/Login.vue';
 import NotFoundView from './components/404.vue'
 import OrderDetailsView from './components/OrderDetails/OrderDetails.vue'
 import ItemsView from './components/Items/Items.vue'
-import UserListView from './components/Settings/UserList.vue'
-import RoleListView from './components/Settings/RoleList.vue'
+import UserListView from './components/Settings/User/UserList.vue'
+import RoleListView from './components/Settings/Role/RoleList.vue'
+import MenuListView from './components/Settings/Menu/MenuList.vue'
 
 let routes = [
     { path: '/login', component: LoginView, name: 'login', meta: { requiresGuest: true } },
@@ -20,6 +21,7 @@ let routes = [
         children: [
             { path: '/users', component: UserListView,  meta: { requiresAuth: true }},
             { path: '/roles', component: RoleListView,  meta: { requiresAuth: true }},
+            { path: '/menus', component: MenuListView,  meta: { requiresAuth: true }},
             { path: '', component: DashboardView, name: 'dashboard', meta: { requiresAuth: true },
                 children: [
                     // { path: '/dashboard', redirect: {name: 'orderdetails'}, meta: { requiresAuth: true } },

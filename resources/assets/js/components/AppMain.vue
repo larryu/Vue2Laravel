@@ -13,7 +13,6 @@
 
 <script>
     import AppFooter from './AppFooter.vue'
-    import Notification from './Notification.vue'
     import jwtToken from './../helpers/jwt-token';
     import * as api from './../config'
     import * as types from './../mutation-types';
@@ -26,7 +25,6 @@
             }
         },
         components: {
-            'notification': Notification,
             'app-footer': AppFooter,
         },
         data () {

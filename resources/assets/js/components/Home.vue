@@ -1,6 +1,7 @@
 <template>
     <div id="home">
         <app-menu></app-menu>
+        <notification></notification>
         <!--<app-tabs></app-tabs>-->
         <div id="mainbody">
             <div class="mainbody-view">
@@ -14,7 +15,7 @@
 <script>
 import AppMenu from './AppMenu.vue'
 import AppTabs from './AppTabs.vue'
-
+import Notification from './Notification.vue'
 export default {
     data() {
         return {
@@ -23,6 +24,7 @@ export default {
     components: {
         'app-menu': AppMenu,
         'app-tabs': AppTabs,
+        'notification': Notification,
     },
     beforeCreate() {
         console.log('Home beforeCreate created.')

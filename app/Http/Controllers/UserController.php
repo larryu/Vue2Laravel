@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Services\UserService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
+use App\Models\Repositories\UserRepository as User;
+
 class UserController extends Controller
 {
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index(Request $request)
     {
         $data = [];
@@ -35,11 +45,12 @@ class UserController extends Controller
     {
         // 1) first get user from token to check validation
         // $user = JWTAuth::parseToken()->authenticate();
-        $user = $request->user();
+        //$user = $request->user();
 
-        return $user;
+
+        return $this->user->all();
 
 
     }
-    
+
 }

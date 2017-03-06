@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ResourceType;
+//use App\Models\Entities\ResourceType;
 
 class Group extends Model
 {

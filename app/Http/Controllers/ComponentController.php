@@ -2,14 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Component;
-use App\Models\Page;
+use App\Models\Entities\ResourceType;
+use App\Models\Services\ComponentService;
+use App\Models\Services\PageService;
+use App\Models\Services\UserService;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use DB;
 
 class ComponentController extends Controller
 {
+    protected $componentService;
+    protected $userService;
+    protected $pageService;
+
+    public function __construct(ComponentService $componentService,
+                                UserService $userService,
+                                PageService $pageService)
+    {
+        $this->componentService = $componentService;
+        $this->userService = $userService;
+        $this->pageService = $pageService;
+    }
+
     public function show(Request $request)
     {
         $rules = [
@@ -17,16 +31,15 @@ class ComponentController extends Controller
         ];
         $this->validate($request, $rules);
         $pageName = $request->input('pageName');
-        $page = Page::where('name', $pageName)->first();
+        $page = $this->pageService->getPageByName($pageName);
 
         // 1) first get user from token to check validation
         $user = JWTAuth::parseToken()->authenticate();
 
         // 2) get all components belongs to this page
-        $components = Component::where('active', 1)->where('page_id', $page->id)
-                                 ->get(['*', DB::raw("'RW' as permission")])->keyBy('id')->toArray();
+        $components = $this->componentService->getAll($page->id);
         // 2) get accessible components based on user
-        $aclComponents = $user->getAclComponents();
+        $aclComponents = $this->userService->getAclResourceByType($user, ResourceType::COMPONENT);
         // 3) rebuild $mergedComponents
         // replace the first array with keys on in first array
         // $mergedComponents = array_replace($components, $aclComponents);

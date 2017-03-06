@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DeviceType extends Model
+class ResponsiveSetting extends Model
 {
      /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'device_types';
-    
+    protected $table = 'responsive_settings';
+
 }

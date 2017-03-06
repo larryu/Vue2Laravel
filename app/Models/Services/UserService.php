@@ -1,65 +1,23 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Services;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\UserGroup;
-use App\Models\Group;
-use App\Models\Role;
+use App\Models\Entities\User;
+use App\Models\Entities\Permission;
+use App\Models\Entities\ResourceType;
+use App\Models\Repositories\UserRepository;
 
-class User extends Authenticatable
+class UserService
 {
-    use Notifiable;
+    protected $userRepository;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token', 'active', 'created_at', 'created_by', 'updated_at', 'updated_by'
-    ];
-
-    /**
-     * Get the usergroups associated with the user.
-     */
-    public function usergroups()
+    public function __construct(UserRepository $userRepository)
     {
-        return $this->hasMany('App\Models\UserGroup')->where('active',1);
+        $this->userRepository = $userRepository;
     }
-    /**
-     * Get the groups associated with the user.
-     */
-    public function groups()
+    public function getRoles($user)
     {
-        // return $this->hasManyThrough(Group::class, UserGroup::class, 'user_id', 'group_id', 'id');
-        $groups = Group::join('user_group', 'groups.id', '=', 'user_group.group_id')
-            ->whereRaw('user_group.user_id = ? and user_group.active = 1 and groups.active = 1', [$this->id])
-            ->get(['groups.*']);
-        return $groups;
-    }
-    /**
-     * Get the roles associated with the user.
-     */
-    public function roles()
-    {
-        // return $this->hasManyThrough(Group::class, UserGroup::class, 'user_id', 'group_id', 'id');
-        $roles = Role::join('groups', 'groups.role_id', '=', 'roles.id')
-            ->join('user_group', 'groups.id', '=', 'user_group.group_id')
-            ->whereRaw('user_group.user_id = ? and roles.active = 1 and groups.active = 1 and user_group.active = 1', [$this->id])
-            ->orderBY('roles.id', 'asc')
-            ->get(['roles.*']);
-        return $roles;
+        return $this->userRepository->getRoles($user);
     }
     /**
      * Get accessible menus
@@ -68,7 +26,7 @@ class User extends Authenticatable
     public function getAclMenus()
     {
         $menus = [];
-        $groups = $this->groups();
+        $groups = $this->userRepository->groups();
         foreach($groups as $group)
         {
             //$resMenus = $group->groupMenuResourcePermissions();
@@ -177,14 +135,16 @@ class User extends Authenticatable
         }
         return $processes;
     }
+
     /**
-     * Get accessible resources
+     * @param User $user
+     * @param $resourceType
      * @return array
      */
-    public function getAclResourceByType($resourceType)
+    public function getAclResourceByType(User $user, $resourceType)
     {
         $resRets = [];
-        $groups = $this->groups();
+        $groups = $user->groups();
 
         foreach($groups as $group)
         {
@@ -205,4 +165,5 @@ class User extends Authenticatable
         }
         return $resRets;
     }
+
 }
