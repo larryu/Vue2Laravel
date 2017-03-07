@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-use App\Models\Repositories\UserRepository as User;
+use App\Models\Entities\User;
 
 class UserController extends Controller
 {
@@ -53,8 +53,8 @@ class UserController extends Controller
     public function getUserNodes(Request $request)
     {
         try {
-//            // 1) first get user from token to check validation
-//            $user = JWTAuth::parseToken()->authenticate();
+            // 1) first get user from token to check validation
+            //$user = JWTAuth::parseToken()->authenticate();
 //            // 2) get all users
 //            $userNodes= $this->userService->getAllUserNodes();
 

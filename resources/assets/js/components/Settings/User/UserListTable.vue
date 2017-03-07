@@ -1,6 +1,22 @@
 <template>
     <div>
-        <custom-filter-bar @onClickNew="onClickNew"></custom-filter-bar>
+        <div>
+            <div class="pull-left">
+                <custom-filter-bar @onClickNew="onClickNew"></custom-filter-bar>
+            </div>
+            <div class="pull-right">
+                <form class="form-inline">
+                    <label>Per Page:</label>
+                    <select class="form-control dropdown" v-model="perPage">
+                        <option :value="5">5</option>
+                        <option :value="10">10</option>
+                        <option :value="20">20</option>
+                        <option :value="50">50</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
         <vuetable ref="vuetable"
                   :api-url="url"
                   :fields="fields"
@@ -36,12 +52,22 @@
     import UserCustomActions from './UserCustomActions.vue'
     import UserCustomFilterBar from './UserCustomFilterBar.vue'
     import VueSweetAlert from 'vue-sweetalert'
+    import VueEvents from 'vue-events'
+    Vue.use(VueEvents);
     Vue.use(VueSweetAlert);
 
     Vue.component('custom-actions', UserCustomActions);
     Vue.component('custom-filter-bar', UserCustomFilterBar);
 
     export default {
+        computed: {
+            url(){
+                return this.selectedRole? (api.currentUserNodes + '?selectedRole=' + this.selectedRole) : '';
+            }
+        },
+        props: {
+            selectedRole: '',
+        },
         components: {
             Vuetable,
             VuetablePagination,
@@ -49,7 +75,6 @@
         },
         data () {
             return {
-                url: api.currentUserNodes,
                 paginationPath: '',
                 search: '',
                 perPage: 5,
@@ -161,28 +186,42 @@
                 console.log('getGroupRoleLabel usergroups=', usergroups);
                 let ret = '';
                 usergroups.forEach(function(item, index, arr){
-                    console.log('forEach item=', item);
-                    console.log('forEach index=', index);
-                    console.log('forEach arr=', arr);
                     ret = ret + '<div>' +  (item.group? item.group.name : '');
                     ret = ret + (item.group.role? '|' + item.group.role.name : '') + '</div>';
-                    console.log('forEach ret=', ret);
                 });
                 return ret;
             }
         },
         events: {
-//            'filter-set' (filterText) {
-//                this.moreParams = {
-//                    filter: filterText
-//                }
-//                Vue.nextTick( () => this.$refs.vuetable.refresh() )
-//            },
-//            'filter-reset' () {
-//                this.moreParams = {}
-//                Vue.nextTick( () => this.$refs.vuetable.refresh() )
-//            }
-        }
+            'filter-set' (filterText) {
+                this.moreParams = {
+                    filter: filterText
+                }
+                Vue.nextTick( () => this.$refs.vuetable.refresh() )
+            },
+            'filter-reset' () {
+                this.moreParams = {}
+                Vue.nextTick( () => this.$refs.vuetable.refresh() )
+            }
+        },
+        watch: {
+            'perPage' (newVal, oldVal) {
+                this.$nextTick(function() {
+                    this.$refs.vuetable.refresh()
+                })
+            },
+            'paginationComponent' (newVal, oldVal) {
+                this.$nextTick(function() {
+                    this.$refs.pagination.setPaginationData(this.$refs.vuetable.tablePagination)
+                })
+            },
+            url() {
+                console.log('watch url() = ', this.url);
+                this.$nextTick(function() {
+                    this.$refs.vuetable.refresh()
+                })
+            }
+        },
     }
 </script>
 <style>

@@ -157,4 +157,17 @@ class RoleRepository extends Repository
             ->select('user_group.user_id')->get();
         return $users;
     }
+
+    public function getAllChildrenIds($role)
+    {
+        $roleIDs = [];
+        $roles = $this->getAllChildren($role, $roles, $role->id);
+
+        foreach($roles as $role)
+        {
+            $roleIDs[] = $role['id'];
+        }
+        return $roleIDs;
+    }
+
 }

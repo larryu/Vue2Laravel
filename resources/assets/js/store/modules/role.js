@@ -47,7 +47,8 @@ export default {
         [types.UNSET_ROLES] (state, payload) {
             console.log('types.UNSET_ROLES payload=', payload);
             console.log('types.UNSET_ROLES state=', state);
-            state.roles = [];
+            state.roles.assingedRoles = [];
+            state.roles.childRoles = [];
         },
         [types.SET_ROLE_SHOW_MODAL] (state, payload) {
             console.log('types.SET_ROLE_SHOW_MODAL payload=', payload.data);

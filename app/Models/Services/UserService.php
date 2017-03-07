@@ -4,16 +4,20 @@ namespace App\Models\Services;
 
 use App\Models\Entities\User;
 use App\Models\Entities\Permission;
+use App\Models\Repositories\RoleRepository;
 use App\Models\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class UserService
 {
     protected $userRepository;
+    protected $roleRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository,
+                                RoleRepository $roleRepository)
     {
         $this->userRepository = $userRepository;
+        $this->roleRepository = $roleRepository;
     }
     public function getRoles($user)
     {
@@ -66,6 +70,6 @@ class UserService
     }
     public function getByPaginate(Request $request)
     {
-        return $this->userRepository->getByPaginate($request);
+        return $this->userRepository->getByPaginate($this->roleRepository, $request);
     }
 }

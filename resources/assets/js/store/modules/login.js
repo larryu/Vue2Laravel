@@ -70,6 +70,9 @@ export default {
 
             return new Promise((resolve, reject) => {
                 dispatch('unsetAuthUser');
+                dispatch('unsetRoles');
+                dispatch('unsetMenus');
+
                 resolve();
             });
         }

@@ -8,11 +8,17 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="user-title">
-                                    User list
+                                    <span class="pull-left">Assigned Roles:
+                                        <v-select  id="selectRoles"
+                                                   :value="selectedRole"
+                                                   :options="currentAssignedRoles"
+                                                   @change="onRoleChanged">
+                                        </v-select>
+                                    </span>
                                 </div>
                             </div>
                             <div id="userlist" class="panel-body table-responsive">
-                                <user-list-table></user-list-table>
+                                <user-list-table :selectedRole="selectedRole" ></user-list-table>
                             </div>
                         </div>
                     </div>
@@ -28,9 +34,12 @@
     import UserListView from './UserListView.vue'
     import UserListTable from './UserListTable.vue'
     import UserCrudModal from './UserCrudModal.vue'
+    import select from 'vue-strap/src/Select'
+
     export default {
         data () {
             return {
+                selectedRole: '',
             }
         },
         computed: {
@@ -39,19 +48,33 @@
             }),
             ...mapState({
                 user: state => state.authUser,
+                roles: state => state.role.roles,
             }),
+            currentAssignedRoles() {
+                console.log('currentAssignedRoles = ', this.roles.assingedRoles);
+                let options = [];
+                for (let role in this.roles.assingedRoles) {
+                    if (!this.selectedRole) this.selectedRole = this.roles.assingedRoles[role].name;
+                    options.push({value: this.roles.assingedRoles[role].name, label: this.roles.assingedRoles[role].name});
+                }
+                console.log('options = ', options);
+                return options;
+            },
         },
         created() {
             console.log('UserList vue Component created.');
-//            this.$store.dispatch('setUserNodes')
-//                .then((response) => {
-//                    console.log('UserList vue created response=', response);
-//                })
-//                .catch((error) => {
-//                    console.error('UserList vue created error=', error);
-//                });
+
+            this.$store.dispatch('setRoles')
+                .then((response) => {
+                    console.log('currentAssignedRoles vue created response=', response);
+                })
+                .catch((error) => {
+                    console.log('currentAssignedRoles vue created error=', error);
+                });
+
         },
         components: {
+            'v-select': select,
             'user-crud-modal': UserCrudModal,
             'user-list-view': UserListView,
             'user-list-table': UserListTable,
@@ -60,7 +83,17 @@
             console.log('UserList vue Component mounted.');
         },
         methods: {
+            onRoleChanged(value)
+            {
+                console.log('onSelected=', value);
+                this.selectedRole = value;
+            },
         },
+        watch: {
+            selectedRole(newVal, oldVal) {
+                console.log('watch selectedRole =', newVal, oldVal);
+            }
+        }
     }
 </script>
 
@@ -84,7 +117,7 @@
         /* symbol for "collapsed" panels */
         content: "\e080";
     }
-    .role-title {
+    .user-title {
         margin-left: 6px;
         height: 30px;
     }

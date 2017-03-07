@@ -7,14 +7,14 @@
                     <div class="col-md-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                    <div class="role-title">
-                                            <span class="pull-left">Assigned Roles:
-                                                <v-select  id="selectRoles"
-                                                           :options="currentAssignedRoles"
-                                                           @change="onRoleChanged">
-                                                </v-select>
-                                            </span>
-                                    </div>
+                                <div class="role-title">
+                                    <span class="pull-left">Assigned Roles:
+                                        <v-select  id="selectRoles"
+                                                   :options="currentAssignedRoles"
+                                                   @change="onRoleChanged">
+                                        </v-select>
+                                    </span>
+                                </div>
                             </div>
                             <div id="rolelist" class="panel-collapse collapse in table-responsive">
                                 <ul class="list-group">
