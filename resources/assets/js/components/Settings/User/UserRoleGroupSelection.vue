@@ -18,21 +18,19 @@
                     <tr class="list-panel-row" item_id="">
                         <td>
                             <div class="form-group">
-                                <select class="form-control input-sm Suppliers" list-panel-row="typeId" required="required" list-item="NEW_O1488846571810">
-                                <option value="109">4Cabling</option>
+                                <select class="form-control">
+                                    <option value="109"></option>
                                 </select>
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                <div class="input-group input-group-sm">
-                                    <select class="form-control input-sm Suppliers" list-panel-row="typeId" required="required" list-item="NEW_O1488846571810">
-                                        <option value="109">4Cabling</option>
-                                    </select>
-                                    <span class="btn btn-del btn-danger input-group-addon Suppliers">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </span>
-                                </div>
+                                <select class="form-control">
+                                    <option value="109"></option>
+                                </select>
+                                <span class="btn btn-del btn-danger btn-xs">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </span>
                             </div>
                         </td>
                     </tr>
@@ -48,6 +46,7 @@
     export default {
         data () {
             return {
+                formData: [] ,
             }
         },
         methods: {
