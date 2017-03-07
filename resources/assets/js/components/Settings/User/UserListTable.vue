@@ -1,16 +1,17 @@
 <template>
     <div>
-        <custom-filter-bar></custom-filter-bar>
+        <custom-filter-bar @onClickNew="onClickNew"></custom-filter-bar>
         <vuetable ref="vuetable"
                   :api-url="url"
                   :fields="fields"
-                  pagination-path=""
+                  :per-page="perPage"
+                  :pagination-path="paginationPath"
                   :css="css.table"
                   :sort-order="sortOrder"
                   :multi-sort="true"
+                  @CustomAction:action-item="onActions"
                   detail-row-component="custom-detail-row"
                   :append-params="moreParams"
-                  @vuetable:cell-clicked="onCellClicked"
                   @vuetable:pagination-data="onPaginationData"
         ></vuetable>
         <div class="vuetable-pagination">
@@ -31,14 +32,14 @@
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
     import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
     import Vue from 'vue'
-    import * as api from './../../config';
-    import CustomActions from './CustomActions'
-    import CustomDetailRow from './CustomDetailRow'
-    import CustomFilterBar from './CustomFilterBar'
+    import * as api from './../../../config';
+    import UserCustomActions from './UserCustomActions.vue'
+    import UserCustomFilterBar from './UserCustomFilterBar.vue'
+    import VueSweetAlert from 'vue-sweetalert'
+    Vue.use(VueSweetAlert);
 
-    Vue.component('custom-actions', CustomActions)
-    Vue.component('custom-detail-row', CustomDetailRow)
-    Vue.component('custom-filter-bar', CustomFilterBar)
+    Vue.component('custom-actions', UserCustomActions);
+    Vue.component('custom-filter-bar', UserCustomFilterBar);
 
     export default {
         components: {
@@ -49,6 +50,9 @@
         data () {
             return {
                 url: api.currentUserNodes,
+                paginationPath: '',
+                search: '',
+                perPage: 5,
                 fields: [
                     {
                         name: 'id',
@@ -72,9 +76,9 @@
                         sortField: 'email',
                     },
                     {
-                        title: 'Group | Role,
-                        name: 'grouprole',
-                        sortField: 'grouprole',
+                        title: 'Group | Role',
+                        name: 'usergroups',
+                        callback: 'getGroupRoleLabel'
                     },
                     {
                         name: '__component:custom-actions',
@@ -110,37 +114,74 @@
             }
         },
         methods: {
-            formatNumber (value) {
-                return accounting.formatNumber(value, 2)
-            },
-            formatDate (value, fmt = 'D MMM YYYY') {
-                return (value == null)
-                    ? ''
-                    : moment(value, 'YYYY-MM-DD').format(fmt)
+            onClickNew() {
+                console.log('userListTable onClickNew');
             },
             onPaginationData (paginationData) {
-                this.$refs.pagination.setPaginationData(paginationData)
-                this.$refs.paginationInfo.setPaginationData(paginationData)
+                this.$refs.pagination.setPaginationData(paginationData);
+                this.$refs.paginationInfo.setPaginationData(paginationData);
             },
             onChangePage (page) {
                 this.$refs.vuetable.changePage(page)
             },
-            onCellClicked (data, field, event) {
-                console.log('cellClicked: ', field.name)
-                this.$refs.vuetable.toggleDetailRow(data.id)
+            onActions (data) {
+                console.log('userListTable onActions', data);
+                let payload = {
+                    isShow: true,
+                    data: data
+                };
+                if (data.action === 'Delete')
+                {
+                    let swal = this.$swal;
+                    let me = this;
+                    this.$swal({
+                        title: 'Are you sure?',
+                        text: 'You will not be able to recover this user!',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes',
+                        cancelButtonText: 'cancel',
+                        confirmButtonClass: 'btn btn-success',
+                        cancelButtonClass: 'btn btn-danger',
+                        allowOutsideClick: false
+                    }).then(function() {
+                        me.$store.dispatch('deleteUserRequest', data.data)
+                            .then((response) => {})
+                            .catch((error) => {});
+                    }, function (dismiss) {
+                    });
+                    return;
+                }
+                this.$store.dispatch('setUserShowModal', payload);
             },
+            getGroupRoleLabel(usergroups)
+            {
+                console.log('getGroupRoleLabel usergroups=', usergroups);
+                let ret = '';
+                usergroups.forEach(function(item, index, arr){
+                    console.log('forEach item=', item);
+                    console.log('forEach index=', index);
+                    console.log('forEach arr=', arr);
+                    ret = ret + '<div>' +  (item.group? item.group.name : '');
+                    ret = ret + (item.group.role? '|' + item.group.role.name : '') + '</div>';
+                    console.log('forEach ret=', ret);
+                });
+                return ret;
+            }
         },
         events: {
-            'filter-set' (filterText) {
-                this.moreParams = {
-                    filter: filterText
-                }
-                Vue.nextTick( () => this.$refs.vuetable.refresh() )
-            },
-            'filter-reset' () {
-                this.moreParams = {}
-                Vue.nextTick( () => this.$refs.vuetable.refresh() )
-            }
+//            'filter-set' (filterText) {
+//                this.moreParams = {
+//                    filter: filterText
+//                }
+//                Vue.nextTick( () => this.$refs.vuetable.refresh() )
+//            },
+//            'filter-reset' () {
+//                this.moreParams = {}
+//                Vue.nextTick( () => this.$refs.vuetable.refresh() )
+//            }
         }
     }
 </script>

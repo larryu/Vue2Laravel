@@ -6,8 +6,11 @@
             </div>
             <div slot="modal-body" class="modal-body">
                 <div class="form-group">
-                    <bs-input label="State Name" type="text" required  :maxlength="255" :icon="true" v-model="formData.name"></bs-input>
-                    <bs-input label="Comment" type="textarea" :maxlength="255" :icon="true" v-model="formData.comment"></bs-input>
+                    <bs-input label="User Name" type="text" required  :maxlength="255" :icon="true" v-model="formData.name"></bs-input>
+                    <bs-input label="Email" type="email" required  :maxlength="255" :icon="true" v-model="formData.email"></bs-input>
+                    <user-role-group-selection></user-role-group-selection>
+                    <bs-input label="New Password" type="password" :maxlength="255" :icon="true" v-model="formData.password"></bs-input>
+                    <bs-input label="Confirm Password" type="password" :maxlength="255" :icon="true" v-model="formData.confirmPassword"></bs-input>
                 </div>
             </div>
             <div slot="modal-footer" class="modal-footer">
@@ -23,12 +26,13 @@
     import { mapState } from 'vuex'
     import modal from 'vue-strap/src/Modal'
     import input from 'vue-strap/src/Input'
+    import UserRoleGroupSelection from './UserRoleGroupSelection.vue'
 
     export default {
         computed: {
             ...mapState({
-                showModal: state => state.state.showModal,
-                stateData: state=> state.state.stateData,
+                showModal: state => state.user.showModal,
+                userData: state=> state.user.userData,
             }),
         },
         data () {
@@ -36,7 +40,11 @@
                 title: '',
                 formData: {
                     name: '',
-                    comment: '',
+                    email: '',
+                    password: '',
+                    confirmPassword:'',
+                    group:'',
+                    role:'',
                     id: '',
                 }
             }
@@ -47,9 +55,10 @@
         components: {
             'custom-modal': modal,
             'bs-input': input,
+            'user-role-group-selection': UserRoleGroupSelection,
         },
         mounted() {
-            console.log('CustomModal Component mounted. stateData=', this.stateData)
+            console.log('CustomModal Component mounted. userData=', this.userData)
         },
         methods: {
             OnSave() {
@@ -58,19 +67,19 @@
                     isShow: false,
                     data: this.formData,
                 };
-                if (this.stateData.action === 'Add')
+                if (this.userData.action === 'Add')
                 {
                     // new state
-                    this.$store.dispatch('setStateShowModal', payload);
-                    this.$store.dispatch('addStateRequest', this.formData)
+                    this.$store.dispatch('setUserShowModal', payload);
+                    this.$store.dispatch('addUserRequest', this.formData)
                         .then((response) => {})
                         .catch((error) => {});
                 }
-                else if (this.stateData.action === 'Edit')
+                else if (this.userData.action === 'Edit')
                 {
                     // update
-                    this.$store.dispatch('setStateShowModal', payload);
-                    this.$store.dispatch('updateStateRequest', this.formData)
+                    this.$store.dispatch('setUserShowModal', payload);
+                    this.$store.dispatch('updateUserRequest', this.formData)
                         .then((response) => {})
                         .catch((error) => {});
                 }
@@ -85,32 +94,34 @@
                     isShow: false,
                     data: this.formData,
                 };
-                this.$store.dispatch('setStateShowModal', payload);
+                this.$store.dispatch('setUserShowModal', payload);
                 this.resetFormData();
             },
             resetFormData() {
                 this.formData = {
                     name: '',
-                    comment: '',
+                    email: '',
+                    password: '',
                     id: ''
                 };
             }
         },
         watch: {
-            stateData() {
-                console.log('+++++++++++++ stateData changed =', this.stateData);
-                if (this.stateData && this.stateData.action === 'Add')
+            userData() {
+                console.log('+++++++++++++ userData changed =', this.userData);
+                if (this.userData && this.userData.action === 'Add')
                 {
                     this.resetFormData();
-                    this.title = 'Adding a new state';
+                    this.title = 'Adding a new user';
                 }
-                else if (this.stateData && this.stateData.action === 'Edit')
+                else if (this.userData && this.userData.action === 'Edit')
                 {
                     this.resetFormData();
-                    this.title = 'Editing the state';
-                    this.formData.id = this.stateData.data.id;
-                    this.formData.name = this.stateData.data.name;
-                    this.formData.comment = this.stateData.data.comment;
+                    this.title = 'Editing the user';
+                    this.formData.id = this.userData.data.id;
+                    this.formData.name = this.userData.data.name;
+                    this.formData.email = this.userData.data.email;
+                    this.formData.password = this.userData.data.password;
                 }
             }
         }

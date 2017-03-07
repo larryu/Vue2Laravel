@@ -10,9 +10,9 @@ class Group extends Model
     /**
      * Get the roles that has the group.
      */
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany(Role::class)->where('active',1);
+        return $this->belongsTo(Role::class)->where('active',1);
     }
 
     /**

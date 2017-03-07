@@ -32,7 +32,7 @@ class User extends Authenticatable
      */
     public function usergroups()
     {
-        return $this->hasMany(UserGroup::class)->where('active',1);
+        return $this->hasMany(UserGroup::class)->where('active',1)->with('group');
     }
     /**
      * Get the groups associated with the user.

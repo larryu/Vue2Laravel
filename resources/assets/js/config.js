@@ -26,3 +26,8 @@ export const currentStateNodes = apiDomain + '/statenodes';
 export const updateState = apiDomain + '/state/edit/';
 export const addState = apiDomain + '/state/add/';
 export const deleteState = apiDomain + '/state/delete/';
+
+export const currentUserNodes = apiDomain + '/usernodes';
+export const updateUser = apiDomain + '/user/edit/';
+export const addUser = apiDomain + '/user/add/';
+export const deleteUser = apiDomain + '/user/delete/';

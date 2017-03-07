@@ -33,6 +33,11 @@ Route::group(['middleware' => 'jwt.auth'], function()
     Route::post('state/edit/', 'StateController@updateState');
     Route::post('state/add/', 'StateController@addState');
     Route::post('state/delete/', 'StateController@deleteState');
+
+    Route::get('usernodes', 'UserController@getUserNodes');
+    Route::post('user/edit/', 'UserController@updateUser');
+    Route::post('user/add/', 'UserController@addUser');
+    Route::post('user/delete/', 'UserController@deleteUser');
 });
 
 //Route::get('roles', function() {

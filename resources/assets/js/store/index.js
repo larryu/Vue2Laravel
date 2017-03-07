@@ -13,6 +13,7 @@ import cashSaleDetails from  "./modules/cash-sale-details"
 import role from "./modules/role"
 import loading from "./modules/loading"
 import state from "./modules/state"
+import user from "./modules/user"
 
 Vue.use(Vuex);
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
         cashSaleDetails,
         role,
         state,
+        user,
     },
     strict: true
 });

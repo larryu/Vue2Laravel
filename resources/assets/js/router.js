@@ -10,10 +10,10 @@ import LoginView from './components/Login.vue';
 import NotFoundView from './components/404.vue'
 import OrderDetailsView from './components/OrderDetails/OrderDetails.vue'
 import ItemsView from './components/Items/Items.vue'
-import UserListView from './components/Settings/User/UserList.vue'
 import RoleListView from './components/Settings/Role/RoleList.vue'
 import MenuListView from './components/Settings/Menu/MenuList.vue'
 import StateListView from './components/Settings/State/StateList.vue'
+import UserListView from './components/Settings/User/UserList.vue'
 
 let routes = [
     { path: '/login', component: LoginView, name: 'login', meta: { requiresGuest: true } },

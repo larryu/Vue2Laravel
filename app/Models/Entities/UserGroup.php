@@ -19,6 +19,6 @@ class UserGroup extends Model
     }
     public function group()
     {
-        return $this->belongsTo(Group::class)->where('active',1);
+        return $this->belongsTo(Group::class)->where('active',1)->with('role');
     }    
 }
