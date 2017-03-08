@@ -2,6 +2,7 @@
 
 namespace App\Models\Services;
 
+use App\Models\Entities\Role;
 use App\Models\Entities\User;
 use App\Models\Entities\Permission;
 use App\Models\Repositories\RoleRepository;
@@ -71,5 +72,20 @@ class UserService
     public function getByPaginate(Request $request)
     {
         return $this->userRepository->getByPaginate($this->roleRepository, $request);
+    }
+    public function getRoleOptions(Request $request)
+    {
+        $selectedRoleName = $request->selectedRole;
+        $selectedRole = Role::where('name', $selectedRoleName)->first();
+        $roleOptions = [];
+        $roleOptions = $this->roleRepository->getAllChildren($selectedRole, $roleOptions, $selectedRole->id);
+        return $roleOptions;
+    }
+    public function getGroupOptions(Request $request)
+    {
+        $selectedRoleName = $request->selectedRole;
+        $selectedRole = Role::where('name', $selectedRoleName)->first();
+        $groups = $selectedRole->groups;
+        return $groups;
     }
 }

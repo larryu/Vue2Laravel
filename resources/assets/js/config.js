@@ -31,3 +31,5 @@ export const currentUserNodes = apiDomain + '/usernodes';
 export const updateUser = apiDomain + '/user/edit/';
 export const addUser = apiDomain + '/user/add/';
 export const deleteUser = apiDomain + '/user/delete/';
+export const roleOptions = apiDomain + '/user/roleoptions';
+export const groupOptions = apiDomain + '/user/groupoptions';

@@ -14,7 +14,7 @@
 Route::get('/{vue_capture?}', function () {
     return view('welcome');
 });
-Route::get('/test/user', 'UserController@getUserNodes');
+Route::get('/test/user', 'UserController@getGroupOptions');
 
 Route::get('/test/users', function() {
     $state = \App\Models\Entities\State::find(10);

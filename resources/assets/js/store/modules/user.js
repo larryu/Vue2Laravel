@@ -8,7 +8,7 @@ export default {
         showModal: false,
         userData: null,
         modalForm: {
-            state: null,
+            user: null,
         },
     },
     getters: {
@@ -174,6 +174,30 @@ export default {
                 type: types.SET_USER_SHOW_MODAL,
                 data: data
             });
+        },
+        getRoleOptions: ({dispatch}, selectedRole) => {
+            return new Promise((resolve, reject) => {
+                console.log('getRoleOptions selectedRole=',selectedRole);
+                Vue.http.get(api.roleOptions + '?selectedRole=' + selectedRole)
+                    .then(response => {
+                        resolve(response);
+                    })
+                    .catch(response => {
+                        reject(response);
+                    });
+            })
+        },
+        getGroupOptions: ({dispatch}, selectedRole) => {
+            return new Promise((resolve, reject) => {
+                console.log('getGroupOptions selectedRole=',selectedRole);
+                Vue.http.get(api.groupOptions + '?selectedRole=' + selectedRole)
+                    .then(response => {
+                        resolve(response);
+                    })
+                    .catch(response => {
+                        reject(response);
+                    });
+            })
         },
     }
 }

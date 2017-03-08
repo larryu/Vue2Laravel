@@ -1,6 +1,6 @@
 <template>
     <div>
-        <custom-modal :value="showModal" @cancel="onClose" effect="fade">
+        <custom-modal v-if="showModal" :value="showModal" @cancel="onClose" effect="fade">
             <div slot="modal-header" class="modal-header">
                 <h4 class="modal-title"> {{ title }} </h4>
             </div>
@@ -8,7 +8,42 @@
                 <div class="form-group">
                     <bs-input label="User Name" type="text" required  :maxlength="255" :icon="true" v-model="formData.name"></bs-input>
                     <bs-input label="Email" type="email" required  :maxlength="255" :icon="true" v-model="formData.email"></bs-input>
-                    <user-role-group-selection></user-role-group-selection>
+                    <div class="role-group-panel">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a>
+                                    <strong>Role | Group</strong>
+                                </a>
+                            </div>
+                            <div class="list-div ">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th>Role</th>
+                                        <th>Group</th>
+                                        <th>
+                                            <span class="btn btn-del btn-primary btn-xs pull-right" title="New" @click="onClickNewRoleGroup()">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                                NEW
+                                            </span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr is="user-role-group-selection" v-for="(rolegroup, index) in rolegroups"
+                                        :currentRole="selectedRole"
+                                        :selectedRole="rolegroup.role"
+                                        :selectedGroup="rolegroup.group"
+                                        :row-data="rolegroup"
+                                        :row-index="index"
+                                        @onDelete="onDeleteRoleGroup"
+                                    >
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <bs-input label="New Password" type="password" :maxlength="255" :icon="true" v-model="formData.password"></bs-input>
                     <bs-input label="Confirm Password" type="password" :maxlength="255" :icon="true" v-model="formData.confirmPassword"></bs-input>
                 </div>
@@ -46,7 +81,12 @@
                     group:'',
                     role:'',
                     id: '',
-                }
+                    rolegroups: [],
+                },
+                rolegroups: [],
+                selectedRole: '',
+                selectedGroup: '',
+                usergroups: [],
             }
         },
         created() {
@@ -61,6 +101,15 @@
             console.log('CustomModal Component mounted. userData=', this.userData)
         },
         methods: {
+            onDeleteRoleGroup(data) {
+                console.log('CustomModal onDeleteRoleGroup', data);
+                this.rolegroups.splice(data.index, 1);
+            },
+            onClickNewRoleGroup() {
+                console.log('onClickNewRoleGroup');
+                this.rolegroups.push({role: '', group: ''});
+                console.log('userData ====== this.rolegroups=', this.rolegroups);
+            },
             OnSave() {
                 console.log('OnSave');
                 let payload = {
@@ -109,10 +158,13 @@
         watch: {
             userData() {
                 console.log('+++++++++++++ userData changed =', this.userData);
+                this.selectedRole = this.userData.selectedRole;
                 if (this.userData && this.userData.action === 'Add')
                 {
                     this.resetFormData();
                     this.title = 'Adding a new user';
+                    this.usergroups = null;
+                    this.formData.rolegroups = [];
                 }
                 else if (this.userData && this.userData.action === 'Edit')
                 {
@@ -122,6 +174,14 @@
                     this.formData.name = this.userData.data.name;
                     this.formData.email = this.userData.data.email;
                     this.formData.password = this.userData.data.password;
+                    this.usergroups = this.userData.data.usergroups;
+                    let rolegroups = [];
+                    for (let usergroup in this.usergroups) {
+                        rolegroups.push({role: this.usergroups[usergroup].group.role.name, group: this.usergroups[usergroup].group.name});
+                    }
+                    this.formData.rolegroups = rolegroups;
+                    this.rolegroups = rolegroups;
+                    console.log('userData ====== this.formData.rolegroups=', this.formData.rolegroups);
                 }
             }
         }
@@ -137,5 +197,8 @@
         border-color: #0a5b9e;
         border-top-right-radius: 3px;
         border-top-left-radius: 3px;
+    }
+    .table {
+        margin-bottom: 10px !important;
     }
 </style>

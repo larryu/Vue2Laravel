@@ -38,6 +38,9 @@ Route::group(['middleware' => 'jwt.auth'], function()
     Route::post('user/edit/', 'UserController@updateUser');
     Route::post('user/add/', 'UserController@addUser');
     Route::post('user/delete/', 'UserController@deleteUser');
+
+    Route::get('user/roleoptions', 'UserController@getRoleOptions');
+    Route::get('user/groupoptions', 'UserController@getGroupOptions');
 });
 
 //Route::get('roles', function() {

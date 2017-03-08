@@ -151,9 +151,10 @@
             },
             onActions (data) {
                 console.log('userListTable onActions', data);
+                data.selectedRole = this.selectedRole;
                 let payload = {
                     isShow: true,
-                    data: data
+                    data: data,
                 };
                 if (data.action === 'Delete')
                 {

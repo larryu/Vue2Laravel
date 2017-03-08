@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Services\RoleService;
 use App\Models\Services\UserService;
 use Exception;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ use App\Models\Entities\User;
 class UserController extends Controller
 {
     private $userService;
+    private $roleService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, RoleService $roleService)
     {
         $this->userService = $userService;
     }
@@ -54,10 +56,7 @@ class UserController extends Controller
     {
         try {
             // 1) first get user from token to check validation
-            //$user = JWTAuth::parseToken()->authenticate();
-//            // 2) get all users
-//            $userNodes= $this->userService->getAllUserNodes();
-
+            $user = JWTAuth::parseToken()->authenticate();
             $userNodes = $this->userService->getByPaginate($request);
 
         } catch (Exception $e) {
@@ -113,4 +112,29 @@ class UserController extends Controller
         return response()->json(compact('user'));
     }
 
+    public function getRoleOptions(Request $request)
+    {
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+            $roles = $this->userService->getRoleOptions($request);
+        }
+        catch (Exception $e)
+        {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+        return response()->json(compact('roles'));
+    }
+
+    public function getGroupOptions(Request $request)
+    {
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+            $groups = $this->userService->getGroupOptions($request);
+        }
+        catch (Exception $e)
+        {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+        return response()->json(compact('groups'));
+    }
 }
