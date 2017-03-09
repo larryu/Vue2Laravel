@@ -10,7 +10,7 @@ import AppMain   from './components/AppMain.vue'
 Vue.component('appmain', AppMain)
 
 Vue.http.interceptors.push((request, next) => {
-    console.log('Vue.http.interceptors.push');
+    console.log('Vue.http.interceptors.push request=', request);
     request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
     if(jwtToken.getToken()) {
         request.headers.set('Authorization', 'Bearer '+ jwtToken.getToken());
