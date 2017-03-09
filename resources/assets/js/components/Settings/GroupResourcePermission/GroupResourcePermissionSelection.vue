@@ -1,31 +1,31 @@
 <template>
-        <tr class="list-panel-row">
-            <td width="60%">
-                <div class="input-group-sm">
-                    <v-select
+    <tr class="list-panel-row">
+        <td width="60%">
+            <div class="input-group-sm">
+                <v-select
                         v-model="rowData.role"
                         :value="defaultRole"
                         :options="roleOptions"
                         @change="onRoleChanged">
-                    </v-select>
-                </div>
-            </td>
-            <td width="40%">
-                <div class="input-group-sm">
-                    <v-select
+                </v-select>
+            </div>
+        </td>
+        <td width="40%">
+            <div class="input-group-sm">
+                <v-select
                         v-model="rowData.group"
                         :value="defaultGroup"
                         :options="groupOptions"
                         @change="onGroupChanged">
-                    </v-select>
-                </div>
-            </td>
-            <td width="20%">
+                </v-select>
+            </div>
+        </td>
+        <td width="20%">
                 <span class="btn btn-del btn-danger btn-sm" @click="onDelete(rowData, rowIndex)">
                     <span class="glyphicon glyphicon-trash"></span>
                 </span>
-            </td>
-        </tr>
+        </td>
+    </tr>
 </template>
 
 <script>

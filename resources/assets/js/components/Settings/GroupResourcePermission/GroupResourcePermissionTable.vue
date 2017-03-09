@@ -49,15 +49,15 @@
     import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
     import Vue from 'vue'
     import * as api from './../../../config';
-    import UserCustomActions from './UserCustomActions.vue'
-    import UserCustomFilterBar from './UserCustomFilterBar.vue'
+    import GroupResourcePermissionCustomActions from './GroupResourcePermissionCustomActions.vue'
+    import GroupResourcePermissionFilterBar from './GroupResourcePermissionFilterBar.vue'
     import VueSweetAlert from 'vue-sweetalert'
     import VueEvents from 'vue-events'
     Vue.use(VueEvents);
     Vue.use(VueSweetAlert);
 
-    Vue.component('custom-actions', UserCustomActions);
-    Vue.component('custom-filter-bar', UserCustomFilterBar);
+    Vue.component('custom-actions', GroupResourcePermissionCustomActions);
+    Vue.component('custom-filter-bar', GroupResourcePermissionFilterBar);
 
     export default {
         computed: {

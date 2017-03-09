@@ -69,6 +69,9 @@ class UserController extends Controller
         $rules = [
             'id' => 'required',
             'name'  =>  'required',
+            'email' => 'required|email',
+//            'role' => 'required',
+//            'group' => 'required'
         ];
         try {
             $this->validate($request, $rules);
@@ -85,6 +88,9 @@ class UserController extends Controller
     {
         $rules = [
             'name'  =>  'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'confirmPassword' => 'required',
         ];
         try {
             $this->validate($request, $rules);

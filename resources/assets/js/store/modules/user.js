@@ -71,7 +71,7 @@ export default {
                 user: body.user
             });
             dispatch('showSuccessNotification', 'User has been updated.');
-            dispatch('setUserNodes');
+            // dispatch('setUserNodes');
         },
         updateUserFailure: ({commit, dispatch}, body) => {
             commit({
@@ -102,7 +102,7 @@ export default {
                 user: body.user
             });
             dispatch('showSuccessNotification', 'User has been deleted.');
-            dispatch('setUserNodes');
+            //dispatch('setUserNodes');
         },
         deleteUserFailure: ({commit, dispatch}, body) => {
             commit({
@@ -134,7 +134,7 @@ export default {
                 user: body.user
             });
             dispatch('showSuccessNotification', 'User has been added.');
-            dispatch('setUserNodes');
+            //dispatch('setUserNodes');
         },
         addUserFailure: ({commit, dispatch}, body) => {
             commit({

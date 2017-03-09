@@ -30,7 +30,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr is="user-role-group-selection"
+                                    <tr is="grp-selection"
                                         v-for="(rolegroup, index) in rolegroups"
                                         :key ="index"
                                         v-if="rolegroup"
@@ -70,7 +70,7 @@
     import { mapState } from 'vuex'
     import modal from 'vue-strap/src/Modal'
     import input from 'vue-strap/src/Input'
-    import UserRoleGroupSelection from './UserRoleGroupSelection.vue'
+    import GroupResourcePermissionSelection from './GroupResourcePermissionSelection.vue'
 
     export default {
         computed: {
@@ -98,19 +98,19 @@
             }
         },
         created() {
-            console.log('CustomModal Component created.')
+            console.log('GroupResourcePermissionCrudModal Component created.')
         },
         components: {
             'custom-modal': modal,
             'bs-input': input,
-            'user-role-group-selection': UserRoleGroupSelection,
+            'grp-selection': GroupResourcePermissionSelection,
         },
         mounted() {
-            console.log('CustomModal Component mounted. userData=', this.userData)
+            console.log('GroupResourcePermissionCrudModal Component mounted. userData=', this.userData)
         },
         methods: {
             onDeleteRoleGroup(data) {
-                console.log('CustomModal onDeleteRoleGroup', data);
+                console.log('GroupResourcePermissionCrudModal onDeleteRoleGroup', data);
                 this.rolegroups.splice(data.index, 1);
             },
             onClickNewRoleGroup() {

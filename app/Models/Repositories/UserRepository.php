@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Models\Repositories;
+use App\Models\Entities\Group;
+use App\Models\Entities\User;
+use App\Models\Entities\UserGroup;
 use Bosnadev\Repositories\Eloquent\Repository;
-use DB;
-use Illuminate\Container\Container as App;
-use Illuminate\Support\Collection;
+use Exception;
 use App\Models\Entities\Role;
+use DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class UserRepository extends Repository
 {
@@ -33,28 +37,118 @@ class UserRepository extends Repository
     }
     public function add($request)
     {
-        $user =  new User();
-        $user->name = $request->input('name');
-        $user->comment = $request->input('comment');
-        $user->email = $request->input('email');
-        $user->save();
-        return $user;
+        try {
+            DB::beginTransaction();
+            $user =  new User();
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $password = $request->input('password');
+            $confirmPassword = $request->input('confirmPassword');
+            if ($password != $confirmPassword)
+            {
+                throw new Exception('Passwords do not match!');
+            }
+            if ($password)
+            {
+                $user->password = bcrypt($password);
+            }
+            $user->save();
+            $role_groups = $request->input('rolegroups');
+            if (count($role_groups) == 0)
+            {
+                throw new Exception('At lease one role and group must be assigned to this user!');
+            }
+            foreach($role_groups as $role_group)
+            {
+                $newRoleGroup = New UserGroup();
+                $role = Role::where('name', $role_group['role'])->first();
+                $group = Group::where('name', $role_group['group'])
+                    ->where('role_id', $role->id)->first();
+                $newRoleGroup->user_id = $user->id;
+                $newRoleGroup->group_id = $group->id;
+                $newRoleGroup->save();
+            }
+            DB::commit();
+            return $user;
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            throw $e;
+        }
     }
     public function save($request)
     {
-        $user =  $this->model->findOrFail($request->input('id'));
-        $user->name = $request->input('name');
-        $user->comment = $request->input('comment');
-        $user->email = $request->input('email');
-        $user->save();
-        return $user;
+        try {
+            DB::beginTransaction();
+            $user =  $this->model->findOrFail($request->input('id'));
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $password = $request->input('password');
+            $confirmPassword = $request->input('confirmPassword');
+            if ($password != $confirmPassword)
+            {
+                throw new Exception('Passwords do not match!');
+            }
+            if ($password)
+            {
+                $user->password = bcrypt($password);
+            }
+            // update user_group table
+            // first delete all records belongs to this user in user_group table
+            // then insert new ones
+            $role_groups = $request->input('rolegroups');
+            if (count($role_groups) == 0)
+            {
+                throw new Exception('At lease one role and group must be assigned to this user!');
+            }
+            $user_group = UserGroup::where('user_id', $user->id)
+                ->where('active', 1)->update(['active' => 0]);
+            foreach($role_groups as $role_group)
+            {
+                $newRoleGroup = New UserGroup();
+                $role = Role::where('name', $role_group['role'])->first();
+                $group = Group::where('name', $role_group['group'])
+                    ->where('role_id', $role->id)->first();
+                $newRoleGroup->user_id = $user->id;
+                $newRoleGroup->group_id = $group->id;
+                $newRoleGroup->save();
+
+            }
+            $user->save();
+            DB::commit();
+            return $user;
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            throw $e;
+        }
+
     }
     public function delete($request)
     {
-        $user =  $this->model->findOrFail($request->input('id'));
-        $user->active = 0;
-        $user->save();
-        return $user;
+        try {
+            DB::beginTransaction();
+            $user =  $this->model->findOrFail($request->input('id'));
+
+            $currentUser = JWTAuth::parseToken()->authenticate();
+            if ($currentUser->id == $user->id)
+            {
+                throw new Exception('Sorry, you do not have the privilege to delete yourself!');
+            }
+            $user->active = 0;
+            $user->save();
+            $user_group = UserGroup::where('user_id', $user->id)
+                ->where('active', 1)->update(['active' => 0]);
+            DB::commit();
+            return $user;
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            throw $e;
+        }
     }
     public function getByPaginate(RoleRepository $roleRepository, $request)
     {

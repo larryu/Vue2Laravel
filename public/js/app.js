@@ -8985,7 +8985,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(17)))
 
 /***/ }),
 /* 4 */
@@ -9841,6 +9841,8 @@ var currentUserNodes = exports.currentUserNodes = apiDomain + '/usernodes';
 var updateUser = exports.updateUser = apiDomain + '/user/edit/';
 var addUser = exports.addUser = apiDomain + '/user/add/';
 var deleteUser = exports.deleteUser = apiDomain + '/user/delete/';
+var roleOptions = exports.roleOptions = apiDomain + '/user/roleoptions';
+var groupOptions = exports.groupOptions = apiDomain + '/user/groupoptions';
 
 /***/ }),
 /* 6 */
@@ -9943,7 +9945,7 @@ var DELETE_USER_FAILURE = exports.DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
 "use strict";
 
 
-var bind = __webpack_require__(21);
+var bind = __webpack_require__(22);
 
 /*global toString:true*/
 
@@ -20957,10 +20959,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(17);
+    adapter = __webpack_require__(18);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(17);
+    adapter = __webpack_require__(18);
   }
   return adapter;
 }
@@ -21035,6 +21037,44 @@ module.exports = defaults;
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(270)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(55),
+  /* template */
+  __webpack_require__(220),
+  /* scopeId */
+  "data-v-55aad462",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/node_modules/vue-strap/src/Select.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-55aad462", Component.options)
+  } else {
+    hotAPI.reload("data-v-55aad462", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports) {
 
 var g;
@@ -21061,7 +21101,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21072,7 +21112,7 @@ var settle = __webpack_require__(41);
 var buildURL = __webpack_require__(44);
 var parseHeaders = __webpack_require__(50);
 var isURLSameOrigin = __webpack_require__(48);
-var createError = __webpack_require__(20);
+var createError = __webpack_require__(21);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(43);
 
 module.exports = function xhrAdapter(config) {
@@ -21246,7 +21286,7 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21272,7 +21312,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21284,7 +21324,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21308,7 +21348,7 @@ module.exports = function createError(message, config, code, response) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21326,7 +21366,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21412,48 +21452,10 @@ exports.default = new _vuex2.default.Store({
 });
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo.png?b246c77ea25db446f83c9457ccd742a2";
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(270)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(55),
-  /* template */
-  __webpack_require__(220),
-  /* scopeId */
-  "data-v-55aad462",
-  /* cssModules */
-  null
-)
-Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/node_modules/vue-strap/src/Select.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-55aad462", Component.options)
-  } else {
-    hotAPI.reload("data-v-55aad462", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
 
 /***/ }),
 /* 25 */
@@ -25471,7 +25473,7 @@ var _router = __webpack_require__(101);
 
 var _router2 = _interopRequireDefault(_router);
 
-var _index = __webpack_require__(22);
+var _index = __webpack_require__(23);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -25537,7 +25539,7 @@ module.exports = __webpack_require__(35);
 
 
 var utils = __webpack_require__(7);
-var bind = __webpack_require__(21);
+var bind = __webpack_require__(22);
 var Axios = __webpack_require__(37);
 var defaults = __webpack_require__(15);
 
@@ -25572,9 +25574,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(18);
+axios.Cancel = __webpack_require__(19);
 axios.CancelToken = __webpack_require__(36);
-axios.isCancel = __webpack_require__(19);
+axios.isCancel = __webpack_require__(20);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -25595,7 +25597,7 @@ module.exports.default = axios;
 "use strict";
 
 
-var Cancel = __webpack_require__(18);
+var Cancel = __webpack_require__(19);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -25812,7 +25814,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(7);
 var transformData = __webpack_require__(42);
-var isCancel = __webpack_require__(19);
+var isCancel = __webpack_require__(20);
 var defaults = __webpack_require__(15);
 
 /**
@@ -25922,7 +25924,7 @@ module.exports = function enhanceError(error, config, code, response) {
 "use strict";
 
 
-var createError = __webpack_require__(20);
+var createError = __webpack_require__(21);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -30242,7 +30244,7 @@ var _RoleListView = __webpack_require__(188);
 
 var _RoleListView2 = _interopRequireDefault(_RoleListView);
 
-var _Select = __webpack_require__(24);
+var _Select = __webpack_require__(16);
 
 var _Select2 = _interopRequireDefault(_Select);
 
@@ -30923,6 +30925,50 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var _vue = __webpack_require__(3);
 
@@ -30963,8 +31009,12 @@ exports.default = {
                 confirmPassword: '',
                 group: '',
                 role: '',
-                id: ''
-            }
+                id: '',
+                rolegroups: []
+            },
+            rolegroups: [],
+            selectedRole: '',
+            selectedGroup: ''
         };
     },
     created: function created() {
@@ -30981,7 +31031,18 @@ exports.default = {
     },
 
     methods: {
+        onDeleteRoleGroup: function onDeleteRoleGroup(data) {
+            console.log('CustomModal onDeleteRoleGroup', data);
+            this.rolegroups.splice(data.index, 1);
+        },
+        onClickNewRoleGroup: function onClickNewRoleGroup() {
+            console.log('onClickNewRoleGroup');
+            this.rolegroups.push({ role: '', group: '' });
+            console.log('userData ====== this.rolegroups=', this.rolegroups);
+        },
         OnSave: function OnSave() {
+            var _this = this;
+
             console.log('OnSave');
             var payload = {
                 isShow: false,
@@ -30990,46 +31051,68 @@ exports.default = {
             if (this.userData.action === 'Add') {
                 // new state
                 this.$store.dispatch('setUserShowModal', payload);
-                this.$store.dispatch('addUserRequest', this.formData).then(function (response) {}).catch(function (error) {});
+                this.$store.dispatch('addUserRequest', this.formData).then(function (response) {
+                    console.log('addUserRequest fire events -> refreshUserTable');
+                    _this.$events.fire('refreshUserTable');
+                }).catch(function (error) {});
             } else if (this.userData.action === 'Edit') {
                 // update
                 this.$store.dispatch('setUserShowModal', payload);
-                this.$store.dispatch('updateUserRequest', this.formData).then(function (response) {}).catch(function (error) {});
+                this.$store.dispatch('updateUserRequest', this.formData).then(function (response) {
+                    console.log('updateUserRequest fire events -> refreshUserTable');
+                    _this.$events.fire('refreshUserTable');
+                }).catch(function (error) {});
             } else {
                 // error
             }
         },
         onClose: function onClose() {
             console.log('onClose');
+            this.resetFormData();
             var payload = {
                 isShow: false,
                 data: this.formData
             };
+            this.formData.rolegroups = [];
+            this.rolegroups = this.formData.rolegroups;
             this.$store.dispatch('setUserShowModal', payload);
-            this.resetFormData();
         },
         resetFormData: function resetFormData() {
             this.formData = {
                 name: '',
                 email: '',
                 password: '',
-                id: ''
+                confirmPassword: '',
+                id: '',
+                rolegroups: []
             };
         }
     },
     watch: {
         userData: function userData() {
             console.log('+++++++++++++ userData changed =', this.userData);
+            this.selectedRole = this.userData.selectedRole;
             if (this.userData && this.userData.action === 'Add') {
                 this.resetFormData();
                 this.title = 'Adding a new user';
+                this.formData.rolegroups = [];
+                this.rolegroups = this.formData.rolegroups;
             } else if (this.userData && this.userData.action === 'Edit') {
                 this.resetFormData();
                 this.title = 'Editing the user';
                 this.formData.id = this.userData.data.id;
                 this.formData.name = this.userData.data.name;
                 this.formData.email = this.userData.data.email;
-                this.formData.password = this.userData.data.password;
+                this.formData.password = '';
+                this.formData.confirmPassword = '';
+                var usergroups = this.userData.data.usergroups;
+                var rolegroups = [];
+                for (var usergroup in usergroups) {
+                    rolegroups.push({ role: usergroups[usergroup].group.role.name, group: usergroups[usergroup].group.name });
+                }
+                this.formData.rolegroups = rolegroups;
+                this.rolegroups = rolegroups;
+                console.log('userData ====== this.formData.rolegroups=', this.formData.rolegroups);
             }
         }
     }
@@ -31209,7 +31292,7 @@ var _UserCrudModal = __webpack_require__(193);
 
 var _UserCrudModal2 = _interopRequireDefault(_UserCrudModal);
 
-var _Select = __webpack_require__(24);
+var _Select = __webpack_require__(16);
 
 var _Select2 = _interopRequireDefault(_Select);
 
@@ -31452,6 +31535,11 @@ exports.default = {
     methods: {
         onClickNew: function onClickNew() {
             console.log('userListTable onClickNew');
+            var payload = {
+                isShow: true,
+                data: { action: 'Add', selectedRole: this.selectedRole, data: null, index: '' }
+            };
+            this.$store.dispatch('setUserShowModal', payload);
         },
         onPaginationData: function onPaginationData(paginationData) {
             this.$refs.pagination.setPaginationData(paginationData);
@@ -31462,6 +31550,7 @@ exports.default = {
         },
         onActions: function onActions(data) {
             console.log('userListTable onActions', data);
+            data.selectedRole = this.selectedRole;
             var payload = {
                 isShow: true,
                 data: data
@@ -31482,7 +31571,10 @@ exports.default = {
                     cancelButtonClass: 'btn btn-danger',
                     allowOutsideClick: false
                 }).then(function () {
-                    me.$store.dispatch('deleteUserRequest', data.data).then(function (response) {}).catch(function (error) {});
+                    me.$store.dispatch('deleteUserRequest', data.data).then(function (response) {
+                        console.log('deleteUserRequest fire events -> refreshUserTable');
+                        me.$events.fire('refreshUserTable');
+                    }).catch(function (error) {});
                 }, function (dismiss) {});
                 return;
             }
@@ -31515,6 +31607,14 @@ exports.default = {
             this.moreParams = {};
             _vue2.default.nextTick(function () {
                 return _this2.$refs.vuetable.refresh();
+            });
+        },
+        'refreshUserTable': function refreshUserTable() {
+            var _this3 = this;
+
+            console.log('events -> refreshUserTable');
+            _vue2.default.nextTick(function () {
+                return _this3.$refs.vuetable.refresh();
             });
         }
     },
@@ -31687,23 +31787,8 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
 //
 //
 //
@@ -31734,14 +31819,100 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var _vuex = __webpack_require__(4);
+
+var _Select = __webpack_require__(16);
+
+var _Select2 = _interopRequireDefault(_Select);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {
+    components: {
+        'v-select': _Select2.default
+    },
+    props: {
+        currentRole: '',
+        selectedRole: '',
+        selectedGroup: '',
+        rowData: {
+            type: Object,
+            required: true
+        },
+        rowIndex: {
+            type: Number
+        }
+    },
+    computed: _extends({}, (0, _vuex.mapState)({
+        user: function user(state) {
+            return state.authUser;
+        }
+    })),
     data: function data() {
-        return {};
+        return {
+            defaultRole: '',
+            defaultGroup: '',
+            groupOptions: [],
+            roleOptions: [],
+            formData: []
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        console.log('UserRoleGroupSelection created');
+        console.log('UserRoleGroupSelection created selectedRole=', this.selectedRole);
+        console.log('UserRoleGroupSelection created selectedGroup=', this.selectedGroup);
+        // get all children roles based on selectedRole
+        this.$store.dispatch('getRoleOptions', this.currentRole).then(function (response) {
+            console.log('getRoleOptions success=', response);
+            _this.setRoleOptions(response.data.roles);
+        }).catch(function (error) {
+            console.error('getRoleOptions error=', error);
+        });
     },
 
     methods: {
-        onClickNew: function onClickNew() {
-            console.log('UserRoleGroupSelection onClickNew');
+        setRoleOptions: function setRoleOptions(roles) {
+            var options = [];
+            for (var role in roles) {
+                options.push({ value: roles[role].name, label: roles[role].name });
+            }
+            this.roleOptions = options;
+            this.defaultRole = this.selectedRole ? this.selectedRole : this.roleOptions[0].value;
+        },
+        setGroupOptions: function setGroupOptions(groups) {
+            if (!groups || groups.length == 0) return;
+            var options = [];
+            for (var group in groups) {
+                console.log('setRoleOptions role=', group);
+                options.push({ value: groups[group].name, label: groups[group].name });
+            }
+            this.groupOptions = options;
+            this.defaultGroup = this.selectedGroup ? this.selectedGroup : this.groupOptions[0].value;
+        },
+        onDelete: function onDelete(rowData, rowIndex) {
+            console.log('UserRoleGroupSelection onDelete');
+            console.log('UserRoleGroupSelection onDelete rowData=', rowData);
+            console.log('UserRoleGroupSelection onDelete =rowIndex', rowIndex);
+            this.$emit('onDelete', { action: 'delete', data: rowData, index: rowIndex });
+        },
+        onRoleChanged: function onRoleChanged(selVal) {
+            var _this2 = this;
+
+            console.log('UserRoleGroupSelection onRoleChanged');
+            this.groupOptions = [];
+            this.defaultGroup = '';
+            // whenever role changes, get the associated groups
+            this.$store.dispatch('getGroupOptions', selVal).then(function (response) {
+                console.log('getGroupOptions success=', response);
+                _this2.setGroupOptions(response.data.groups);
+            }).catch(function (error) {
+                console.error('getGroupOptions error=', error);
+            });
+        },
+        onGroupChanged: function onGroupChanged() {
+            console.log('UserRoleGroupSelection onGroupChanged');
         }
     }
 };
@@ -31838,7 +32009,7 @@ var _jwtToken = __webpack_require__(11);
 
 var _jwtToken2 = _interopRequireDefault(_jwtToken);
 
-var _index = __webpack_require__(22);
+var _index = __webpack_require__(23);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -31886,10 +32057,14 @@ var _UserList = __webpack_require__(195);
 
 var _UserList2 = _interopRequireDefault(_UserList);
 
+var _GroupResourcePermissionList = __webpack_require__(309);
+
+var _GroupResourcePermissionList2 = _interopRequireDefault(_GroupResourcePermissionList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = [{ path: '/login', component: _Login2.default, name: 'login', meta: { requiresGuest: true } }, { path: '/register', component: _Register2.default, name: 'register', meta: {} }, { path: '/', component: _Home2.default, meta: { requiresAuth: true },
-    children: [{ path: '/users', component: _UserList2.default, meta: { requiresAuth: true } }, { path: '/roles', component: _RoleList2.default, meta: { requiresAuth: true } }, { path: '/menus', component: _MenuList2.default, meta: { requiresAuth: true } }, { path: '/states', component: _StateList2.default, meta: { requiresAuth: true } }, { path: '', component: _Dashboard2.default, name: 'dashboard', meta: { requiresAuth: true },
+    children: [{ path: '/users', component: _UserList2.default, meta: { requiresAuth: true } }, { path: '/roles', component: _RoleList2.default, meta: { requiresAuth: true } }, { path: '/menus', component: _MenuList2.default, meta: { requiresAuth: true } }, { path: '/states', component: _StateList2.default, meta: { requiresAuth: true } }, { path: '/groupresourcepermission', component: _GroupResourcePermissionList2.default, meta: { requiresAuth: true } }, { path: '', component: _Dashboard2.default, name: 'dashboard', meta: { requiresAuth: true },
         children: [
         // { path: '/dashboard', redirect: {name: 'orderdetails'}, meta: { requiresAuth: true } },
         { path: '/orderdetails', name: 'orderdetails', component: _OrderDetails2.default, meta: { requiresAuth: true } }, { path: '/items', component: _Items2.default, meta: { requiresAuth: true } }]
@@ -33315,7 +33490,7 @@ exports.default = {
         showModal: false,
         userData: null,
         modalForm: {
-            state: null
+            user: null
         }
     },
     getters: {
@@ -33373,7 +33548,7 @@ exports.default = {
                 user: body.user
             });
             dispatch('showSuccessNotification', 'User has been updated.');
-            dispatch('setUserNodes');
+            // dispatch('setUserNodes');
         },
         updateUserFailure: function updateUserFailure(_ref3, body) {
             var commit = _ref3.commit,
@@ -33410,7 +33585,7 @@ exports.default = {
                 user: body.user
             });
             dispatch('showSuccessNotification', 'User has been deleted.');
-            dispatch('setUserNodes');
+            //dispatch('setUserNodes');
         },
         deleteUserFailure: function deleteUserFailure(_ref6, body) {
             var commit = _ref6.commit,
@@ -33448,7 +33623,7 @@ exports.default = {
                 user: body.user
             });
             dispatch('showSuccessNotification', 'User has been added.');
-            dispatch('setUserNodes');
+            //dispatch('setUserNodes');
         },
         addUserFailure: function addUserFailure(_ref9, body) {
             var commit = _ref9.commit,
@@ -33495,6 +33670,30 @@ exports.default = {
             commit({
                 type: types.SET_USER_SHOW_MODAL,
                 data: data
+            });
+        },
+        getRoleOptions: function getRoleOptions(_ref13, selectedRole) {
+            var dispatch = _ref13.dispatch;
+
+            return new Promise(function (resolve, reject) {
+                console.log('getRoleOptions selectedRole=', selectedRole);
+                _vue2.default.http.get(api.roleOptions + '?selectedRole=' + selectedRole).then(function (response) {
+                    resolve(response);
+                }).catch(function (response) {
+                    reject(response);
+                });
+            });
+        },
+        getGroupOptions: function getGroupOptions(_ref14, selectedRole) {
+            var dispatch = _ref14.dispatch;
+
+            return new Promise(function (resolve, reject) {
+                console.log('getGroupOptions selectedRole=', selectedRole);
+                _vue2.default.http.get(api.groupOptions + '?selectedRole=' + selectedRole).then(function (response) {
+                    resolve(response);
+                }).catch(function (response) {
+                    reject(response);
+                });
             });
         }
     }
@@ -35991,7 +36190,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.modal-header[data-v-29156407] {\n    padding: 15px;\n    border-bottom: 1px solid #e5e5e5;\n    color: white !important;\n    background-color: #0a5b9e !important;\n    border-color: #0a5b9e;\n    border-top-right-radius: 3px;\n    border-top-left-radius: 3px;\n}\n", ""]);
+exports.push([module.i, "\n.modal-header[data-v-29156407] {\n    padding: 15px;\n    border-bottom: 1px solid #e5e5e5;\n    color: white !important;\n    background-color: #0a5b9e !important;\n    border-color: #0a5b9e;\n    border-top-right-radius: 3px;\n    border-top-left-radius: 3px;\n}\n.table[data-v-29156407] {\n    margin-bottom: 10px !important;\n}\n", ""]);
 
 // exports
 
@@ -36019,7 +36218,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37633,7 +37832,7 @@ return Promise;
 
 })));
 //# sourceMappingURL=es6-promise.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(17)))
 
 /***/ }),
 /* 157 */
@@ -54725,7 +54924,7 @@ return Promise;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(291)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(291)(module)))
 
 /***/ }),
 /* 158 */
@@ -56733,7 +56932,44 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.formData.email = $event
       }
     }
-  }), _vm._v(" "), _c('user-role-group-selection'), _vm._v(" "), _c('bs-input', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "role-group-panel"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_c('a', [_c('strong', [_vm._v("Role | Group")])])]), _vm._v(" "), _c('div', {
+    staticClass: "list-div "
+  }, [_c('table', {
+    staticClass: "table table-condensed"
+  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("Role")]), _vm._v(" "), _c('th', [_vm._v("Group")]), _vm._v(" "), _c('th', [_c('span', {
+    staticClass: "btn btn-del btn-primary btn-xs pull-right",
+    attrs: {
+      "title": "New"
+    },
+    on: {
+      "click": function($event) {
+        _vm.onClickNewRoleGroup()
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-plus"
+  }), _vm._v("\n                                            NEW\n                                        ")])])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.rolegroups), function(rolegroup, index) {
+    return (rolegroup) ? _c("user-role-group-selection", {
+      key: index,
+      tag: "tr",
+      attrs: {
+        "currentRole": _vm.selectedRole,
+        "selectedRole": rolegroup.role,
+        "selectedGroup": rolegroup.group,
+        "row-data": rolegroup,
+        "row-index": index
+      },
+      on: {
+        "onDelete": _vm.onDeleteRoleGroup
+      }
+    }) : _vm._e()
+  }))])])])]), _vm._v(" "), _c('bs-input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -56765,6 +57001,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "Confirm Password",
       "type": "password",
       "maxlength": 255,
+      "match": _vm.formData.password,
+      "error": "Passwords do NOT match!",
       "icon": true
     },
     domProps: {
@@ -56926,76 +57164,75 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "form-group",
+  return _c('tr', {
+    staticClass: "list-panel-row"
+  }, [_c('td', {
     attrs: {
-      "id": "user-role-group-selection"
+      "width": "60%"
     }
   }, [_c('div', {
-    staticClass: "role-group-panel"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._m(0), _vm._v(" "), _c('span', {
-    staticClass: "btn btn-del btn-primary btn-xs pull-right",
+    staticClass: "input-group-sm"
+  }, [_c('v-select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.rowData.role),
+      expression: "rowData.role"
+    }],
     attrs: {
-      "title": "New"
+      "value": _vm.defaultRole,
+      "options": _vm.roleOptions
+    },
+    domProps: {
+      "value": (_vm.rowData.role)
     },
     on: {
+      "change": _vm.onRoleChanged,
+      "input": function($event) {
+        _vm.rowData.role = $event
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "40%"
+    }
+  }, [_c('div', {
+    staticClass: "input-group-sm"
+  }, [_c('v-select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.rowData.group),
+      expression: "rowData.group"
+    }],
+    attrs: {
+      "value": _vm.defaultGroup,
+      "options": _vm.groupOptions
+    },
+    domProps: {
+      "value": (_vm.rowData.group)
+    },
+    on: {
+      "change": _vm.onGroupChanged,
+      "input": function($event) {
+        _vm.rowData.group = $event
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "20%"
+    }
+  }, [_c('span', {
+    staticClass: "btn btn-del btn-danger btn-sm",
+    on: {
       "click": function($event) {
-        _vm.onClickNew()
+        _vm.onDelete(_vm.rowData, _vm.rowIndex)
       }
     }
   }, [_c('span', {
-    staticClass: "glyphicon glyphicon-plus"
-  }), _vm._v("\n                        NEW\n                ")])]), _vm._v(" "), _vm._m(1)])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', [_c('strong', [_vm._v("Role | Group")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "list-div table-responsive"
-  }, [_c('table', {
-    staticClass: "table table-condensed"
-  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("Role ")]), _c('th', [_vm._v("Group")])])]), _vm._v(" "), _c('tbody', [_c('tr', {
-    staticClass: "list-panel-row",
-    attrs: {
-      "item_id": ""
-    }
-  }, [_c('td', [_c('div', {
-    staticClass: "form-group"
-  }, [_c('select', {
-    staticClass: "form-control input-sm Suppliers",
-    attrs: {
-      "list-panel-row": "typeId",
-      "required": "required",
-      "list-item": "NEW_O1488846571810"
-    }
-  }, [_c('option', {
-    attrs: {
-      "value": "109"
-    }
-  }, [_vm._v("4Cabling")])])])]), _vm._v(" "), _c('td', [_c('div', {
-    staticClass: "form-group"
-  }, [_c('div', {
-    staticClass: "input-group input-group-sm"
-  }, [_c('select', {
-    staticClass: "form-control input-sm Suppliers",
-    attrs: {
-      "list-panel-row": "typeId",
-      "required": "required",
-      "list-item": "NEW_O1488846571810"
-    }
-  }, [_c('option', {
-    attrs: {
-      "value": "109"
-    }
-  }, [_vm._v("4Cabling")])]), _vm._v(" "), _c('span', {
-    staticClass: "btn btn-del btn-danger input-group-addon Suppliers"
-  }, [_c('span', {
     staticClass: "glyphicon glyphicon-trash"
-  })])])])])])])])])
-}]}
+  })])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -57491,7 +57728,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "mainbody"
     }
-  }, [_c('app-loading'), _vm._v(" "), _c('transition', {
+  }, [_c('transition', {
     attrs: {
       "name": "fade",
       "mode": "out-in"
@@ -58446,7 +58683,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "center-block logo",
     attrs: {
-      "src": __webpack_require__(23)
+      "src": __webpack_require__(24)
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "text-center col-sm-6 col-sm-offset-3"
@@ -59094,7 +59331,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-signin-heading text-center"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(23),
+      "src": __webpack_require__(24),
       "alt": "Dowell"
     }
   })])
@@ -61379,6 +61616,1895 @@ module.exports = function(module) {
 __webpack_require__(32);
 module.exports = __webpack_require__(33);
 
+
+/***/ }),
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var _vue = __webpack_require__(3);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vuex = __webpack_require__(4);
+
+var _Modal = __webpack_require__(9);
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+var _Input = __webpack_require__(13);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _GroupResourcePermissionSelection = __webpack_require__(310);
+
+var _GroupResourcePermissionSelection2 = _interopRequireDefault(_GroupResourcePermissionSelection);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    computed: _extends({}, (0, _vuex.mapState)({
+        showModal: function showModal(state) {
+            return state.user.showModal;
+        },
+        userData: function userData(state) {
+            return state.user.userData;
+        }
+    })),
+    data: function data() {
+        return {
+            title: '',
+            formData: {
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                group: '',
+                role: '',
+                id: '',
+                rolegroups: []
+            },
+            rolegroups: [],
+            selectedRole: '',
+            selectedGroup: ''
+        };
+    },
+    created: function created() {
+        console.log('GroupResourcePermissionCrudModal Component created.');
+    },
+
+    components: {
+        'custom-modal': _Modal2.default,
+        'bs-input': _Input2.default,
+        'grp-selection': _GroupResourcePermissionSelection2.default
+    },
+    mounted: function mounted() {
+        console.log('GroupResourcePermissionCrudModal Component mounted. userData=', this.userData);
+    },
+
+    methods: {
+        onDeleteRoleGroup: function onDeleteRoleGroup(data) {
+            console.log('GroupResourcePermissionCrudModal onDeleteRoleGroup', data);
+            this.rolegroups.splice(data.index, 1);
+        },
+        onClickNewRoleGroup: function onClickNewRoleGroup() {
+            console.log('onClickNewRoleGroup');
+            this.rolegroups.push({ role: '', group: '' });
+            console.log('userData ====== this.rolegroups=', this.rolegroups);
+        },
+        OnSave: function OnSave() {
+            var _this = this;
+
+            console.log('OnSave');
+            var payload = {
+                isShow: false,
+                data: this.formData
+            };
+            if (this.userData.action === 'Add') {
+                // new state
+                this.$store.dispatch('setUserShowModal', payload);
+                this.$store.dispatch('addUserRequest', this.formData).then(function (response) {
+                    console.log('addUserRequest fire events -> refreshUserTable');
+                    _this.$events.fire('refreshUserTable');
+                }).catch(function (error) {});
+            } else if (this.userData.action === 'Edit') {
+                // update
+                this.$store.dispatch('setUserShowModal', payload);
+                this.$store.dispatch('updateUserRequest', this.formData).then(function (response) {
+                    console.log('updateUserRequest fire events -> refreshUserTable');
+                    _this.$events.fire('refreshUserTable');
+                }).catch(function (error) {});
+            } else {
+                // error
+            }
+        },
+        onClose: function onClose() {
+            console.log('onClose');
+            this.resetFormData();
+            var payload = {
+                isShow: false,
+                data: this.formData
+            };
+            this.formData.rolegroups = [];
+            this.rolegroups = this.formData.rolegroups;
+            this.$store.dispatch('setUserShowModal', payload);
+        },
+        resetFormData: function resetFormData() {
+            this.formData = {
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                id: '',
+                rolegroups: []
+            };
+        }
+    },
+    watch: {
+        userData: function userData() {
+            console.log('+++++++++++++ userData changed =', this.userData);
+            this.selectedRole = this.userData.selectedRole;
+            if (this.userData && this.userData.action === 'Add') {
+                this.resetFormData();
+                this.title = 'Adding a new user';
+                this.formData.rolegroups = [];
+                this.rolegroups = this.formData.rolegroups;
+            } else if (this.userData && this.userData.action === 'Edit') {
+                this.resetFormData();
+                this.title = 'Editing the user';
+                this.formData.id = this.userData.data.id;
+                this.formData.name = this.userData.data.name;
+                this.formData.email = this.userData.data.email;
+                this.formData.password = '';
+                this.formData.confirmPassword = '';
+                var usergroups = this.userData.data.usergroups;
+                var rolegroups = [];
+                for (var usergroup in usergroups) {
+                    rolegroups.push({ role: usergroups[usergroup].group.role.name, group: usergroups[usergroup].group.name });
+                }
+                this.formData.rolegroups = rolegroups;
+                this.rolegroups = rolegroups;
+                console.log('userData ====== this.formData.rolegroups=', this.formData.rolegroups);
+            }
+        }
+    }
+};
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var _vue = __webpack_require__(3);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vuex = __webpack_require__(4);
+
+var _GroupResourcePermissionTable = __webpack_require__(322);
+
+var _GroupResourcePermissionTable2 = _interopRequireDefault(_GroupResourcePermissionTable);
+
+var _GroupResourcePermissionCrudModal = __webpack_require__(308);
+
+var _GroupResourcePermissionCrudModal2 = _interopRequireDefault(_GroupResourcePermissionCrudModal);
+
+var _Select = __webpack_require__(16);
+
+var _Select2 = _interopRequireDefault(_Select);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            selectedRole: ''
+        };
+    },
+
+    computed: _extends({}, (0, _vuex.mapGetters)({
+        grpNodes: 'allGroupResourcePermissionNodes'
+    }), (0, _vuex.mapState)({
+        user: function user(state) {
+            return state.authUser;
+        },
+        roles: function roles(state) {
+            return state.role.roles;
+        }
+    }), {
+        currentAssignedRoles: function currentAssignedRoles() {
+            console.log('currentAssignedRoles = ', this.roles.assingedRoles);
+            var options = [];
+            for (var role in this.roles.assingedRoles) {
+                if (!this.selectedRole) this.selectedRole = this.roles.assingedRoles[role].name;
+                options.push({ value: this.roles.assingedRoles[role].name, label: this.roles.assingedRoles[role].name });
+            }
+            console.log('options = ', options);
+            return options;
+        }
+    }),
+    created: function created() {
+        console.log('GroupResourcePermissionList vue Component created.');
+
+        this.$store.dispatch('setRoles').then(function (response) {
+            console.log('currentAssignedRoles vue created response=', response);
+        }).catch(function (error) {
+            console.log('currentAssignedRoles vue created error=', error);
+        });
+    },
+
+    components: {
+        'v-select': _Select2.default,
+        'grp-crud-modal': _GroupResourcePermissionCrudModal2.default,
+        'grp-list-table': _GroupResourcePermissionTable2.default
+    },
+    mounted: function mounted() {
+        console.log('GroupResourcePermissionList vue Component mounted.');
+    },
+
+    methods: {
+        onRoleChanged: function onRoleChanged(value) {
+            console.log('onSelected=', value);
+            this.selectedRole = value;
+        }
+    },
+    watch: {
+        selectedRole: function selectedRole(newVal, oldVal) {
+            console.log('watch selectedRole =', newVal, oldVal);
+        }
+    }
+};
+
+/***/ }),
+/* 304 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var _vuex = __webpack_require__(4);
+
+var _Select = __webpack_require__(16);
+
+var _Select2 = _interopRequireDefault(_Select);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    components: {
+        'v-select': _Select2.default
+    },
+    props: {
+        currentRole: '',
+        selectedRole: '',
+        selectedGroup: '',
+        rowData: {
+            type: Object,
+            required: true
+        },
+        rowIndex: {
+            type: Number
+        }
+    },
+    computed: _extends({}, (0, _vuex.mapState)({
+        user: function user(state) {
+            return state.authUser;
+        }
+    })),
+    data: function data() {
+        return {
+            defaultRole: '',
+            defaultGroup: '',
+            groupOptions: [],
+            roleOptions: [],
+            formData: []
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        console.log('UserRoleGroupSelection created');
+        console.log('UserRoleGroupSelection created selectedRole=', this.selectedRole);
+        console.log('UserRoleGroupSelection created selectedGroup=', this.selectedGroup);
+        // get all children roles based on selectedRole
+        this.$store.dispatch('getRoleOptions', this.currentRole).then(function (response) {
+            console.log('getRoleOptions success=', response);
+            _this.setRoleOptions(response.data.roles);
+        }).catch(function (error) {
+            console.error('getRoleOptions error=', error);
+        });
+    },
+
+    methods: {
+        setRoleOptions: function setRoleOptions(roles) {
+            var options = [];
+            for (var role in roles) {
+                options.push({ value: roles[role].name, label: roles[role].name });
+            }
+            this.roleOptions = options;
+            this.defaultRole = this.selectedRole ? this.selectedRole : this.roleOptions[0].value;
+        },
+        setGroupOptions: function setGroupOptions(groups) {
+            if (!groups || groups.length == 0) return;
+            var options = [];
+            for (var group in groups) {
+                console.log('setRoleOptions role=', group);
+                options.push({ value: groups[group].name, label: groups[group].name });
+            }
+            this.groupOptions = options;
+            this.defaultGroup = this.selectedGroup ? this.selectedGroup : this.groupOptions[0].value;
+        },
+        onDelete: function onDelete(rowData, rowIndex) {
+            console.log('UserRoleGroupSelection onDelete');
+            console.log('UserRoleGroupSelection onDelete rowData=', rowData);
+            console.log('UserRoleGroupSelection onDelete =rowIndex', rowIndex);
+            this.$emit('onDelete', { action: 'delete', data: rowData, index: rowIndex });
+        },
+        onRoleChanged: function onRoleChanged(selVal) {
+            var _this2 = this;
+
+            console.log('UserRoleGroupSelection onRoleChanged');
+            this.groupOptions = [];
+            this.defaultGroup = '';
+            // whenever role changes, get the associated groups
+            this.$store.dispatch('getGroupOptions', selVal).then(function (response) {
+                console.log('getGroupOptions success=', response);
+                _this2.setGroupOptions(response.data.groups);
+            }).catch(function (error) {
+                console.error('getGroupOptions error=', error);
+            });
+        },
+        onGroupChanged: function onGroupChanged() {
+            console.log('UserRoleGroupSelection onGroupChanged');
+        }
+    }
+};
+
+/***/ }),
+/* 305 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-header[data-v-14f2f52d] {\n    padding: 15px;\n    border-bottom: 1px solid #e5e5e5;\n    color: white !important;\n    background-color: #0a5b9e !important;\n    border-color: #0a5b9e;\n    border-top-right-radius: 3px;\n    border-top-left-radius: 3px;\n}\n.table[data-v-14f2f52d] {\n    margin-bottom: 10px !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.panel-primary > .panel-heading[data-v-37f88720] {\n    color: white;\n    background-color: #0a5b9e;\n    border-color: #0a5b9e;\n}\n.panel-heading a[data-v-37f88720] {\n    color: white;\n}\n.panel-heading .accordion-toggle[data-v-37f88720]:after {\n    /* symbol for \"opening\" panels */\n    font-family: 'Glyphicons Halflings';\n    content: \"\\E114\";\n    float: right;\n    color: white;\n}\n.panel-heading .accordion-toggle.collapsed[data-v-37f88720]:after {\n    /* symbol for \"collapsed\" panels */\n    content: \"\\E080\";\n}\n.grp-title[data-v-37f88720] {\n    margin-left: 6px;\n    height: 30px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(314)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(302),
+  /* template */
+  __webpack_require__(311),
+  /* scopeId */
+  "data-v-14f2f52d",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/resources/assets/js/components/Settings/GroupResourcePermission/GroupResourcePermissionCrudModal.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GroupResourcePermissionCrudModal.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14f2f52d", Component.options)
+  } else {
+    hotAPI.reload("data-v-14f2f52d", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(316)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(303),
+  /* template */
+  __webpack_require__(313),
+  /* scopeId */
+  "data-v-37f88720",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/resources/assets/js/components/Settings/GroupResourcePermission/GroupResourcePermissionList.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GroupResourcePermissionList.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-37f88720", Component.options)
+  } else {
+    hotAPI.reload("data-v-37f88720", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(315)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(304),
+  /* template */
+  __webpack_require__(312),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/resources/assets/js/components/Settings/GroupResourcePermission/GroupResourcePermissionSelection.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GroupResourcePermissionSelection.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3723ba2a", Component.options)
+  } else {
+    hotAPI.reload("data-v-3723ba2a", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('custom-modal', {
+    attrs: {
+      "value": _vm.showModal,
+      "effect": "fade"
+    },
+    on: {
+      "cancel": _vm.onClose
+    }
+  }, [_c('div', {
+    staticClass: "modal-header",
+    slot: "modal-header"
+  }, [_c('h4', {
+    staticClass: "modal-title"
+  }, [_vm._v(" " + _vm._s(_vm.title) + " ")])]), _vm._v(" "), _c('div', {
+    staticClass: "modal-body",
+    slot: "modal-body"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('bs-input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formData.name),
+      expression: "formData.name"
+    }],
+    attrs: {
+      "label": "User Name",
+      "type": "text",
+      "required": "",
+      "maxlength": 255,
+      "icon": true
+    },
+    domProps: {
+      "value": (_vm.formData.name)
+    },
+    on: {
+      "input": function($event) {
+        _vm.formData.name = $event
+      }
+    }
+  }), _vm._v(" "), _c('bs-input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formData.email),
+      expression: "formData.email"
+    }],
+    attrs: {
+      "label": "Email",
+      "type": "email",
+      "required": "",
+      "maxlength": 255,
+      "icon": true
+    },
+    domProps: {
+      "value": (_vm.formData.email)
+    },
+    on: {
+      "input": function($event) {
+        _vm.formData.email = $event
+      }
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "role-group-panel"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_c('a', [_c('strong', [_vm._v("Role | Group")])])]), _vm._v(" "), _c('div', {
+    staticClass: "list-div "
+  }, [_c('table', {
+    staticClass: "table table-condensed"
+  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("Role")]), _vm._v(" "), _c('th', [_vm._v("Group")]), _vm._v(" "), _c('th', [_c('span', {
+    staticClass: "btn btn-del btn-primary btn-xs pull-right",
+    attrs: {
+      "title": "New"
+    },
+    on: {
+      "click": function($event) {
+        _vm.onClickNewRoleGroup()
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-plus"
+  }), _vm._v("\n                                            NEW\n                                        ")])])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.rolegroups), function(rolegroup, index) {
+    return (rolegroup) ? _c("grp-selection", {
+      key: index,
+      tag: "tr",
+      attrs: {
+        "currentRole": _vm.selectedRole,
+        "selectedRole": rolegroup.role,
+        "selectedGroup": rolegroup.group,
+        "row-data": rolegroup,
+        "row-index": index
+      },
+      on: {
+        "onDelete": _vm.onDeleteRoleGroup
+      }
+    }) : _vm._e()
+  }))])])])]), _vm._v(" "), _c('bs-input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formData.password),
+      expression: "formData.password"
+    }],
+    attrs: {
+      "label": "New Password",
+      "type": "password",
+      "maxlength": 255,
+      "icon": true
+    },
+    domProps: {
+      "value": (_vm.formData.password)
+    },
+    on: {
+      "input": function($event) {
+        _vm.formData.password = $event
+      }
+    }
+  }), _vm._v(" "), _c('bs-input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formData.confirmPassword),
+      expression: "formData.confirmPassword"
+    }],
+    attrs: {
+      "label": "Confirm Password",
+      "type": "password",
+      "maxlength": 255,
+      "match": _vm.formData.password,
+      "error": "Passwords do NOT match!",
+      "icon": true
+    },
+    domProps: {
+      "value": (_vm.formData.confirmPassword)
+    },
+    on: {
+      "input": function($event) {
+        _vm.formData.confirmPassword = $event
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "modal-footer",
+    slot: "modal-footer"
+  }, [_c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.OnSave
+    }
+  }, [_vm._v("Save")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-success",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.onClose
+    }
+  }, [_vm._v("Cancel")])])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-14f2f52d", module.exports)
+  }
+}
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', {
+    staticClass: "list-panel-row"
+  }, [_c('td', {
+    attrs: {
+      "width": "60%"
+    }
+  }, [_c('div', {
+    staticClass: "input-group-sm"
+  }, [_c('v-select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.rowData.role),
+      expression: "rowData.role"
+    }],
+    attrs: {
+      "value": _vm.defaultRole,
+      "options": _vm.roleOptions
+    },
+    domProps: {
+      "value": (_vm.rowData.role)
+    },
+    on: {
+      "change": _vm.onRoleChanged,
+      "input": function($event) {
+        _vm.rowData.role = $event
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "40%"
+    }
+  }, [_c('div', {
+    staticClass: "input-group-sm"
+  }, [_c('v-select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.rowData.group),
+      expression: "rowData.group"
+    }],
+    attrs: {
+      "value": _vm.defaultGroup,
+      "options": _vm.groupOptions
+    },
+    domProps: {
+      "value": (_vm.rowData.group)
+    },
+    on: {
+      "change": _vm.onGroupChanged,
+      "input": function($event) {
+        _vm.rowData.group = $event
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "20%"
+    }
+  }, [_c('span', {
+    staticClass: "btn btn-del btn-danger btn-sm",
+    on: {
+      "click": function($event) {
+        _vm.onDelete(_vm.rowData, _vm.rowIndex)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-trash"
+  })])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3723ba2a", module.exports)
+  }
+}
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "grp-list"
+    }
+  }, [_c('div', {
+    staticClass: "main"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('grp-crud-modal'), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_c('div', {
+    staticClass: "grp-title"
+  }, [_c('span', {
+    staticClass: "pull-left"
+  }, [_vm._v("Assigned Roles:\n                                    "), _c('v-select', {
+    attrs: {
+      "id": "selectRoles",
+      "value": _vm.selectedRole,
+      "options": _vm.currentAssignedRoles
+    },
+    on: {
+      "change": _vm.onRoleChanged
+    }
+  })], 1)])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body table-responsive",
+    attrs: {
+      "id": "grplist"
+    }
+  }, [_c('grp-list-table', {
+    attrs: {
+      "selectedRole": _vm.selectedRole
+    }
+  })], 1)])])])], 1)])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-37f88720", module.exports)
+  }
+}
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(305);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("6e5c935b", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-14f2f52d&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionCrudModal.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-14f2f52d&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionCrudModal.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(306);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("49dcd38c", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3723ba2a!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionSelection.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3723ba2a!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionSelection.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(307);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("5827196e", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-37f88720&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionList.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-37f88720&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    components: {},
+    props: {
+        item: {
+            type: Object
+        },
+        rowData: {
+            type: Object,
+            required: true
+        },
+        rowIndex: {
+            type: Number
+        }
+    },
+    data: function data() {
+        return {
+            actAdd: false,
+            actEdit: {
+                type: Boolean,
+                default: true
+            },
+            actDelete: {
+                type: Boolean,
+                default: true
+            }
+        };
+    },
+    mounted: function mounted() {},
+    updated: function updated() {
+        console.log('GroupResourcePermissionCustomActions Component updated.');
+    },
+    created: function created() {
+        console.log('GroupResourcePermissionCustomActions created: ', this.rowData, this.rowIndex);
+    },
+
+    methods: {
+        itemAction: function itemAction(action, data, index) {
+            console.log('itemAction: CustomAction:action-item :' + action, data, index);
+            // emit event to let parent do things
+            this.$parent.$emit('CustomAction:action-item', { action: action, data: data, index: index });
+        }
+    },
+    watch: {}
+};
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Vuetable = __webpack_require__(160);
+
+var _Vuetable2 = _interopRequireDefault(_Vuetable);
+
+var _VuetablePagination = __webpack_require__(161);
+
+var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
+
+var _VuetablePaginationInfo = __webpack_require__(162);
+
+var _VuetablePaginationInfo2 = _interopRequireDefault(_VuetablePaginationInfo);
+
+var _vue = __webpack_require__(3);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _config = __webpack_require__(5);
+
+var api = _interopRequireWildcard(_config);
+
+var _GroupResourcePermissionCustomActions = __webpack_require__(321);
+
+var _GroupResourcePermissionCustomActions2 = _interopRequireDefault(_GroupResourcePermissionCustomActions);
+
+var _GroupResourcePermissionFilterBar = __webpack_require__(329);
+
+var _GroupResourcePermissionFilterBar2 = _interopRequireDefault(_GroupResourcePermissionFilterBar);
+
+var _vueSweetalert = __webpack_require__(10);
+
+var _vueSweetalert2 = _interopRequireDefault(_vueSweetalert);
+
+var _vueEvents = __webpack_require__(158);
+
+var _vueEvents2 = _interopRequireDefault(_vueEvents);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueEvents2.default); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+_vue2.default.use(_vueSweetalert2.default);
+
+_vue2.default.component('custom-actions', _GroupResourcePermissionCustomActions2.default);
+_vue2.default.component('custom-filter-bar', _GroupResourcePermissionFilterBar2.default);
+
+exports.default = {
+    computed: {
+        url: function url() {
+            return this.selectedRole ? api.currentUserNodes + '?selectedRole=' + this.selectedRole : '';
+        }
+    },
+    props: {
+        selectedRole: ''
+    },
+    components: {
+        Vuetable: _Vuetable2.default,
+        VuetablePagination: _VuetablePagination2.default,
+        VuetablePaginationInfo: _VuetablePaginationInfo2.default
+    },
+    data: function data() {
+        return {
+            paginationPath: '',
+            search: '',
+            perPage: 5,
+            fields: [{
+                name: 'id',
+                title: '#',
+                titleClass: 'text-right',
+                dataClass: 'text-right'
+            }, {
+                name: '__checkbox',
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }, {
+                title: 'User Name',
+                name: 'name',
+                sortField: 'name'
+            }, {
+                title: 'User Email',
+                name: 'email',
+                sortField: 'email'
+            }, {
+                title: 'Group | Role',
+                name: 'usergroups',
+                callback: 'getGroupRoleLabel'
+            }, {
+                name: '__component:custom-actions',
+                title: 'Actions',
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }],
+            css: {
+                table: {
+                    tableClass: 'table table-bordered table-striped table-hover',
+                    ascendingIcon: 'glyphicon glyphicon-chevron-up',
+                    descendingIcon: 'glyphicon glyphicon-chevron-down'
+                },
+                pagination: {
+                    wrapperClass: 'pagination',
+                    activeClass: 'active',
+                    disabledClass: 'disabled',
+                    pageClass: 'page',
+                    linkClass: 'link'
+                },
+                icons: {
+                    first: 'glyphicon glyphicon-step-backward',
+                    prev: 'glyphicon glyphicon-chevron-left',
+                    next: 'glyphicon glyphicon-chevron-right',
+                    last: 'glyphicon glyphicon-step-forward'
+                }
+            },
+            sortOrder: [{ field: 'name', sortField: 'name', direction: 'asc' }],
+            moreParams: {}
+        };
+    },
+
+    methods: {
+        onClickNew: function onClickNew() {
+            console.log('userListTable onClickNew');
+            var payload = {
+                isShow: true,
+                data: { action: 'Add', selectedRole: this.selectedRole, data: null, index: '' }
+            };
+            this.$store.dispatch('setUserShowModal', payload);
+        },
+        onPaginationData: function onPaginationData(paginationData) {
+            this.$refs.pagination.setPaginationData(paginationData);
+            this.$refs.paginationInfo.setPaginationData(paginationData);
+        },
+        onChangePage: function onChangePage(page) {
+            this.$refs.vuetable.changePage(page);
+        },
+        onActions: function onActions(data) {
+            console.log('userListTable onActions', data);
+            data.selectedRole = this.selectedRole;
+            var payload = {
+                isShow: true,
+                data: data
+            };
+            if (data.action === 'Delete') {
+                var swal = this.$swal;
+                var me = this;
+                this.$swal({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover this user!',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'cancel',
+                    confirmButtonClass: 'btn btn-success',
+                    cancelButtonClass: 'btn btn-danger',
+                    allowOutsideClick: false
+                }).then(function () {
+                    me.$store.dispatch('deleteUserRequest', data.data).then(function (response) {
+                        console.log('deleteUserRequest fire events -> refreshUserTable');
+                        me.$events.fire('refreshUserTable');
+                    }).catch(function (error) {});
+                }, function (dismiss) {});
+                return;
+            }
+            this.$store.dispatch('setUserShowModal', payload);
+        },
+        getGroupRoleLabel: function getGroupRoleLabel(usergroups) {
+            console.log('getGroupRoleLabel usergroups=', usergroups);
+            var ret = '';
+            usergroups.forEach(function (item, index, arr) {
+                ret = ret + '<div>' + (item.group ? item.group.name : '');
+                ret = ret + (item.group.role ? '|' + item.group.role.name : '') + '</div>';
+            });
+            return ret;
+        }
+    },
+    events: {
+        'filter-set': function filterSet(filterText) {
+            var _this = this;
+
+            this.moreParams = {
+                filter: filterText
+            };
+            _vue2.default.nextTick(function () {
+                return _this.$refs.vuetable.refresh();
+            });
+        },
+        'filter-reset': function filterReset() {
+            var _this2 = this;
+
+            this.moreParams = {};
+            _vue2.default.nextTick(function () {
+                return _this2.$refs.vuetable.refresh();
+            });
+        },
+        'refreshUserTable': function refreshUserTable() {
+            var _this3 = this;
+
+            console.log('events -> refreshUserTable');
+            _vue2.default.nextTick(function () {
+                return _this3.$refs.vuetable.refresh();
+            });
+        }
+    },
+    watch: {
+        'perPage': function perPage(newVal, oldVal) {
+            this.$nextTick(function () {
+                this.$refs.vuetable.refresh();
+            });
+        },
+        'paginationComponent': function paginationComponent(newVal, oldVal) {
+            this.$nextTick(function () {
+                this.$refs.pagination.setPaginationData(this.$refs.vuetable.tablePagination);
+            });
+        },
+        url: function url() {
+            console.log('watch url() = ', this.url);
+            this.$nextTick(function () {
+                this.$refs.vuetable.refresh();
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.custom-actions button.ui.button {\n    padding: 8px 8px;\n}\n.custom-actions button.ui.button > i.icon {\n    margin: auto !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.pagination {\n    margin: 0;\n    float: right;\n}\n.pagination a.page {\n    border: 1px solid lightgray;\n    border-radius: 3px;\n    padding: 5px 10px;\n    margin-right: 2px;\n}\n.pagination a.page.active {\n    color: white;\n    background-color: #337ab7;\n    border: 1px solid lightgray;\n    border-radius: 3px;\n    padding: 5px 10px;\n    margin-right: 2px;\n}\n.pagination a.btn-nav {\n    border: 1px solid lightgray;\n    border-radius: 3px;\n    padding: 5px 7px;\n    margin-right: 2px;\n}\n.pagination a.btn-nav.disabled {\n    color: lightgray;\n    border: 1px solid lightgray;\n    border-radius: 3px;\n    padding: 5px 7px;\n    margin-right: 2px;\n    cursor: not-allowed;\n}\n.pagination-info {\n    float: left;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(325)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(317),
+  /* template */
+  __webpack_require__(323),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/resources/assets/js/components/Settings/GroupResourcePermission/GroupResourcePermissionCustomActions.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GroupResourcePermissionCustomActions.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1abf39ea", Component.options)
+  } else {
+    hotAPI.reload("data-v-1abf39ea", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(326)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(318),
+  /* template */
+  __webpack_require__(324),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/resources/assets/js/components/Settings/GroupResourcePermission/GroupResourcePermissionTable.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GroupResourcePermissionTable.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7183866c", Component.options)
+  } else {
+    hotAPI.reload("data-v-7183866c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 323 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "grp-custom-actions text-center"
+  }, [(_vm.actAdd) ? _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "title": "Add"
+    },
+    on: {
+      "click": function($event) {
+        _vm.itemAction('Add', _vm.rowData, _vm.rowIndex)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "glyphicon glyphicon-plus"
+  })]) : _vm._e(), _vm._v(" "), (_vm.actEdit) ? _c('button', {
+    staticClass: "btn btn-warning",
+    attrs: {
+      "title": "Edit"
+    },
+    on: {
+      "click": function($event) {
+        _vm.itemAction('Edit', _vm.rowData, _vm.rowIndex)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "glyphicon glyphicon-pencil"
+  })]) : _vm._e(), _vm._v(" "), (_vm.actDelete) ? _c('button', {
+    staticClass: "btn btn-danger",
+    attrs: {
+      "title": "Delete"
+    },
+    on: {
+      "click": function($event) {
+        _vm.itemAction('Delete', _vm.rowData, _vm.rowIndex)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "glyphicon glyphicon-remove"
+  })]) : _vm._e()])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1abf39ea", module.exports)
+  }
+}
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', [_c('div', {
+    staticClass: "pull-left"
+  }, [_c('custom-filter-bar', {
+    on: {
+      "onClickNew": _vm.onClickNew
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "pull-right"
+  }, [_c('form', {
+    staticClass: "form-inline"
+  }, [_c('label', [_vm._v("Per Page:")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.perPage),
+      expression: "perPage"
+    }],
+    staticClass: "form-control dropdown",
+    on: {
+      "change": function($event) {
+        _vm.perPage = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }
+    }
+  }, [_c('option', {
+    domProps: {
+      "value": 5
+    }
+  }, [_vm._v("5")]), _vm._v(" "), _c('option', {
+    domProps: {
+      "value": 10
+    }
+  }, [_vm._v("10")]), _vm._v(" "), _c('option', {
+    domProps: {
+      "value": 20
+    }
+  }, [_vm._v("20")]), _vm._v(" "), _c('option', {
+    domProps: {
+      "value": 50
+    }
+  }, [_vm._v("50")])])])])]), _vm._v(" "), _c('vuetable', {
+    ref: "vuetable",
+    attrs: {
+      "api-url": _vm.url,
+      "fields": _vm.fields,
+      "per-page": _vm.perPage,
+      "pagination-path": _vm.paginationPath,
+      "css": _vm.css.table,
+      "sort-order": _vm.sortOrder,
+      "multi-sort": true,
+      "detail-row-component": "custom-detail-row",
+      "append-params": _vm.moreParams
+    },
+    on: {
+      "CustomAction:action-item": _vm.onActions,
+      "vuetable:pagination-data": _vm.onPaginationData
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "vuetable-pagination"
+  }, [_c('vuetable-pagination-info', {
+    ref: "paginationInfo",
+    attrs: {
+      "info-class": "pagination-info"
+    }
+  }), _vm._v(" "), _c('vuetable-pagination', {
+    ref: "pagination",
+    attrs: {
+      "css": _vm.css.pagination,
+      "icons": _vm.css.icons
+    },
+    on: {
+      "vuetable-pagination:change-page": _vm.onChangePage
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7183866c", module.exports)
+  }
+}
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(319);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("efb3e3e2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-1abf39ea!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionCustomActions.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-1abf39ea!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionCustomActions.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(320);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("3ba61777", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7183866c!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionTable.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7183866c!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionTable.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    data: function data() {
+        return {
+            filterText: ''
+        };
+    },
+
+    methods: {
+        doFilter: function doFilter() {
+            this.$events.fire('filter-set', this.filterText);
+        },
+        resetFilter: function resetFilter() {
+            this.filterText = '';
+            this.$events.fire('filter-reset');
+        },
+        onClickNew: function onClickNew() {
+            console.log('GroupResourcePermissionFilterBar onClickNew');
+            this.$emit('onClickNew', { action: 'Add' });
+        }
+    }
+};
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.filter-bar {\n    padding: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(331)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(327),
+  /* template */
+  __webpack_require__(330),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/larry/PhpProjects/Vue2Laravel/resources/assets/js/components/Settings/GroupResourcePermission/GroupResourcePermissionFilterBar.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GroupResourcePermissionFilterBar.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-88cec2ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-88cec2ce", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "filter-bar"
+  }, [_c('form', {
+    staticClass: "form-inline"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Search for:")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.filterText),
+      expression: "filterText"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "name, nickname, or email"
+    },
+    domProps: {
+      "value": _vm._s(_vm.filterText)
+    },
+    on: {
+      "keyup": function($event) {
+        if (_vm._k($event.keyCode, "enter", 13)) { return; }
+        _vm.doFilter($event)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.filterText = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-success",
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.doFilter($event)
+      }
+    }
+  }, [_vm._v("Search")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-warning",
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.resetFilter($event)
+      }
+    }
+  }, [_vm._v("Reset")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "title": "New"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.onClickNew($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-plus"
+  }), _vm._v("NEW\n            ")])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-88cec2ce", module.exports)
+  }
+}
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(328);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("a6084fc6", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-88cec2ce!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionFilterBar.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-88cec2ce!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupResourcePermissionFilterBar.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
